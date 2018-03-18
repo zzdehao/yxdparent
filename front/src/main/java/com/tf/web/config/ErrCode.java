@@ -1,6 +1,8 @@
 package com.tf.web.config;
 public enum ErrCode {
     SUCCESS                         (0,"Success"),                      // success
+    NO_PASS                         (249,"password is error"),
+    NO_EXISTS                       (250,"no user"),          // 用户不存在
     CODE_ERR                        (251,"Code error"),             // code换去不到openid
     REGISTERED                      (252,"Registered"),             // 已经注册
     NO_LOGIN                        (255,"No login");          // 用户未登录
