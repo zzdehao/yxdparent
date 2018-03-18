@@ -6,6 +6,7 @@ import com.tf.entity.TProvinceCity;
 import com.tf.service.ProvinceCityService;
 import com.tf.utils.Result;
 import com.tf.utils.ResultR;
+import com.tf.utils.StaticDataMap;
 import com.tf.web.config.ErrCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,10 +25,10 @@ public class ProvinceCityController extends BaseController {
 
     @RequestMapping(value = "/getAllProvinces", method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
-    @ApiOperation(notes = "获得所有城市信息", value = "获得所有城市信息", httpMethod = "POST")
+    @ApiOperation(notes = "获得所有省份信息", value = "获得所有省份信息", httpMethod = "POST")
     public ResultR getAllProvinces() throws Exception {
         TAdmin current = getCurrent();
-        List<TProvinceCity> provinceCities = this.provinceCityService.getProvinces();
+        List<TProvinceCity> provinceCities = StaticDataMap.staticProvinces;
         ResultR resultR = new ResultR(ErrCode.SUCCESS);
         resultR.setData(provinceCities);
         return resultR;
@@ -36,7 +37,7 @@ public class ProvinceCityController extends BaseController {
             produces = "application/json;charset=UTF-8")
     @ApiOperation(notes = "获得所有城市信息", value = "获得所有城市信息", httpMethod = "POST")
     public Result getAllProvinceCitys() throws Exception {
-        List<TProvinceCity> provinceCities = this.provinceCityService.getProvinces();
+        List<TProvinceCity> provinceCities = StaticDataMap.staticProvinces;
         List<TProvinceCity> mapData =new ArrayList<TProvinceCity>();
         for(TProvinceCity province:provinceCities){
             List<TProvinceCity> citys = this.provinceCityService.getAllCitysByPid(province.getId());

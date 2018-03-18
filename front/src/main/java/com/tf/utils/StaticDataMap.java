@@ -1,12 +1,13 @@
 package com.tf.utils;
-import java.util.HashMap;
-import java.util.Map;
+import com.tf.entity.TProvinceCity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wugq on 2018/3/15.
  */
 public class StaticDataMap {
-    public final static Map<String,String> provinceAndCityCodeToNameMapping = new HashMap<String,String>();
-    public final static Map<String,String> provinceAndCityNameToCodeMapping = new HashMap<String,String>();
+    public   static List<TProvinceCity> staticProvinces = new ArrayList<TProvinceCity>();
 
+    public   static List<TProvinceCity> staticProvinceAndCitys = new ArrayList<TProvinceCity>();
 }
