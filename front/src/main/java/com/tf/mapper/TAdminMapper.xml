@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tf.mapper.TAdminMapper">
+  <resultMap id="BaseResultMap" type="com.tf.entity.TAdmin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="blz1" jdbcType="VARCHAR" property="blz1" />
+    <result column="blz2" jdbcType="VARCHAR" property="blz2" />
+    <result column="blz3" jdbcType="VARCHAR" property="blz3" />
+    <result column="store_name" jdbcType="VARCHAR" property="storeName" />
+    <result column="store_id" jdbcType="INTEGER" property="storeId" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="bus_typename" jdbcType="VARCHAR" property="busTypename" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="tel2" jdbcType="VARCHAR" property="tel2" />
+    <result column="grid_code" jdbcType="VARCHAR" property="gridCode" />
+    <result column="grid_name" jdbcType="VARCHAR" property="gridName" />
+    <result column="duty_code" jdbcType="VARCHAR" property="dutyCode" />
+    <result column="duty_name" jdbcType="VARCHAR" property="dutyName" />
+    <result column="dataup_date" jdbcType="VARCHAR" property="dataupDate" />
+    <result column="qita1" jdbcType="VARCHAR" property="qita1" />
+    <result column="qita2" jdbcType="VARCHAR" property="qita2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, create_user, update_time, update_user, name, nickname, password, 
+    dept_id, tel, email, status, remark, role_code, blz1, blz2, blz3, store_name, store_id, 
+    user_type, truename, province_code, province_name, city_code, city_name, bus_typename, 
+    dept_name, tel2, grid_code, grid_name, duty_code, duty_name, dataup_date, qita1, 
+    qita2
+  </sql>
+  <select id="selectByExample" parameterType="com.tf.entity.TAdminExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${limit} offset ${offset}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_admin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tf.entity.TAdminExample">
+    delete from t_admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tf.entity.TAdmin" useGeneratedKeys="true">
+    insert into t_admin (create_time, create_user, update_time, 
+      update_user, name, nickname, 
+      password, dept_id, tel, 
+      email, status, remark, 
+      role_code, blz1, blz2, 
+      blz3, store_name, store_id, 
+      user_type, truename, province_code, 
+      province_name, city_code, city_name, 
+      bus_typename, dept_name, tel2, 
+      grid_code, grid_name, duty_code, 
+      duty_name, dataup_date, qita1, 
+      qita2)
+    values (#{createTime,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{roleCode,jdbcType=VARCHAR}, #{blz1,jdbcType=VARCHAR}, #{blz2,jdbcType=VARCHAR}, 
+      #{blz3,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeId,jdbcType=INTEGER}, 
+      #{userType,jdbcType=INTEGER}, #{truename,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, 
+      #{provinceName,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, 
+      #{busTypename,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{tel2,jdbcType=VARCHAR}, 
+      #{gridCode,jdbcType=VARCHAR}, #{gridName,jdbcType=VARCHAR}, #{dutyCode,jdbcType=VARCHAR}, 
+      #{dutyName,jdbcType=VARCHAR}, #{dataupDate,jdbcType=VARCHAR}, #{qita1,jdbcType=VARCHAR}, 
+      #{qita2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tf.entity.TAdmin" useGeneratedKeys="true">
+    insert into t_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="roleCode != null">
+        role_code,
+      </if>
+      <if test="blz1 != null">
+        blz1,
+      </if>
+      <if test="blz2 != null">
+        blz2,
+      </if>
+      <if test="blz3 != null">
+        blz3,
+      </if>
+      <if test="storeName != null">
+        store_name,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="provinceCode != null">
+        province_code,
+      </if>
+      <if test="provinceName != null">
+        province_name,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="busTypename != null">
+        bus_typename,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="tel2 != null">
+        tel2,
+      </if>
+      <if test="gridCode != null">
+        grid_code,
+      </if>
+      <if test="gridName != null">
+        grid_name,
+      </if>
+      <if test="dutyCode != null">
+        duty_code,
+      </if>
+      <if test="dutyName != null">
+        duty_name,
+      </if>
+      <if test="dataupDate != null">
+        dataup_date,
+      </if>
+      <if test="qita1 != null">
+        qita1,
+      </if>
+      <if test="qita2 != null">
+        qita2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null">
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="blz1 != null">
+        #{blz1,jdbcType=VARCHAR},
+      </if>
+      <if test="blz2 != null">
+        #{blz2,jdbcType=VARCHAR},
+      </if>
+      <if test="blz3 != null">
+        #{blz3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="busTypename != null">
+        #{busTypename,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel2 != null">
+        #{tel2,jdbcType=VARCHAR},
+      </if>
+      <if test="gridCode != null">
+        #{gridCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gridName != null">
+        #{gridName,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyCode != null">
+        #{dutyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyName != null">
+        #{dutyName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataupDate != null">
+        #{dataupDate,jdbcType=VARCHAR},
+      </if>
+      <if test="qita1 != null">
+        #{qita1,jdbcType=VARCHAR},
+      </if>
+      <if test="qita2 != null">
+        #{qita2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tf.entity.TAdminExample" resultType="java.lang.Long">
+    select count(*) from t_admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_admin
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateUser != null">
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null">
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptId != null">
+        dept_id = #{record.deptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleCode != null">
+        role_code = #{record.roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blz1 != null">
+        blz1 = #{record.blz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blz2 != null">
+        blz2 = #{record.blz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blz3 != null">
+        blz3 = #{record.blz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeName != null">
+        store_name = #{record.storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeId != null">
+        store_id = #{record.storeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userType != null">
+        user_type = #{record.userType,jdbcType=INTEGER},
+      </if>
+      <if test="record.truename != null">
+        truename = #{record.truename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceCode != null">
+        province_code = #{record.provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceName != null">
+        province_name = #{record.provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityCode != null">
+        city_code = #{record.cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityName != null">
+        city_name = #{record.cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busTypename != null">
+        bus_typename = #{record.busTypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptName != null">
+        dept_name = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel2 != null">
+        tel2 = #{record.tel2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gridCode != null">
+        grid_code = #{record.gridCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gridName != null">
+        grid_name = #{record.gridName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dutyCode != null">
+        duty_code = #{record.dutyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dutyName != null">
+        duty_name = #{record.dutyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataupDate != null">
+        dataup_date = #{record.dataupDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qita1 != null">
+        qita1 = #{record.qita1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qita2 != null">
+        qita2 = #{record.qita2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_admin
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=VARCHAR},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      dept_id = #{record.deptId,jdbcType=INTEGER},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      role_code = #{record.roleCode,jdbcType=VARCHAR},
+      blz1 = #{record.blz1,jdbcType=VARCHAR},
+      blz2 = #{record.blz2,jdbcType=VARCHAR},
+      blz3 = #{record.blz3,jdbcType=VARCHAR},
+      store_name = #{record.storeName,jdbcType=VARCHAR},
+      store_id = #{record.storeId,jdbcType=INTEGER},
+      user_type = #{record.userType,jdbcType=INTEGER},
+      truename = #{record.truename,jdbcType=VARCHAR},
+      province_code = #{record.provinceCode,jdbcType=VARCHAR},
+      province_name = #{record.provinceName,jdbcType=VARCHAR},
+      city_code = #{record.cityCode,jdbcType=VARCHAR},
+      city_name = #{record.cityName,jdbcType=VARCHAR},
+      bus_typename = #{record.busTypename,jdbcType=VARCHAR},
+      dept_name = #{record.deptName,jdbcType=VARCHAR},
+      tel2 = #{record.tel2,jdbcType=VARCHAR},
+      grid_code = #{record.gridCode,jdbcType=VARCHAR},
+      grid_name = #{record.gridName,jdbcType=VARCHAR},
+      duty_code = #{record.dutyCode,jdbcType=VARCHAR},
+      duty_name = #{record.dutyName,jdbcType=VARCHAR},
+      dataup_date = #{record.dataupDate,jdbcType=VARCHAR},
+      qita1 = #{record.qita1,jdbcType=VARCHAR},
+      qita2 = #{record.qita2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tf.entity.TAdmin">
+    update t_admin
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null">
+        role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="blz1 != null">
+        blz1 = #{blz1,jdbcType=VARCHAR},
+      </if>
+      <if test="blz2 != null">
+        blz2 = #{blz2,jdbcType=VARCHAR},
+      </if>
+      <if test="blz3 != null">
+        blz3 = #{blz3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null">
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="busTypename != null">
+        bus_typename = #{busTypename,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel2 != null">
+        tel2 = #{tel2,jdbcType=VARCHAR},
+      </if>
+      <if test="gridCode != null">
+        grid_code = #{gridCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gridName != null">
+        grid_name = #{gridName,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyCode != null">
+        duty_code = #{dutyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyName != null">
+        duty_name = #{dutyName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataupDate != null">
+        dataup_date = #{dataupDate,jdbcType=VARCHAR},
+      </if>
+      <if test="qita1 != null">
+        qita1 = #{qita1,jdbcType=VARCHAR},
+      </if>
+      <if test="qita2 != null">
+        qita2 = #{qita2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tf.entity.TAdmin">
+    update t_admin
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      role_code = #{roleCode,jdbcType=VARCHAR},
+      blz1 = #{blz1,jdbcType=VARCHAR},
+      blz2 = #{blz2,jdbcType=VARCHAR},
+      blz3 = #{blz3,jdbcType=VARCHAR},
+      store_name = #{storeName,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      truename = #{truename,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      bus_typename = #{busTypename,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      tel2 = #{tel2,jdbcType=VARCHAR},
+      grid_code = #{gridCode,jdbcType=VARCHAR},
+      grid_name = #{gridName,jdbcType=VARCHAR},
+      duty_code = #{dutyCode,jdbcType=VARCHAR},
+      duty_name = #{dutyName,jdbcType=VARCHAR},
+      dataup_date = #{dataupDate,jdbcType=VARCHAR},
+      qita1 = #{qita1,jdbcType=VARCHAR},
+      qita2 = #{qita2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
