@@ -34,4 +34,5 @@ mybatis:
 #  config-location: classpath:mybatis-config.xml
   #实体类所做包,加入后xml中可以直接写类名
   type-aliases-package: com.tf.entity
-  mapperLocations: classpath:mapper/*.xml
+  mapperLocations: classpath:com/tf/mapper/*.xml
+

@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth)
             throws Exception {
+
     }
     // 设置 HTTP 验证规则
     @Override
@@ -31,9 +32,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 对请求进行认证
                 .authorizeRequests()
                 // 支付成功通知放行
-                .antMatchers("*").permitAll()
+                .antMatchers("/login","/swagger-ui.html","/webjars/**").permitAll()
+                .antMatchers("/swagger",
+                        "/v2/api-docs",//swagger api json
+                        "/swagger-resources/configuration/ui",//用来获取支持的动作
+                        "/swagger-resources",//用来获取api-docs的URI
+                        "/swagger-resources/configuration/security",//安全选项
+                        "/swagger-ui.html",
+                        "/webjars/springfox-swagger-ui/images/*.png",
+                        "/webjars/springfox-swagger-ui/lib/*.js",
+                        "/webjars/springfox-swagger-ui/css/*.css",
+                        "/webjars/springfox-swagger-ui/*.js").permitAll()
                 .anyRequest().authenticated()
+
                 .and()
+
                 // 基于token，所以不需要session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
