@@ -27,14 +27,11 @@ public class ProvinceCityController extends BaseController {
     @ApiOperation(notes = "获得所有城市信息", value = "获得所有城市信息", httpMethod = "POST")
     public ResultR getAllProvinces() throws Exception {
         TAdmin current = getCurrent();
-        System.out.println("current:"+current.getId()+" phone:"+current.getTel());
-
         List<TProvinceCity> provinceCities = this.provinceCityService.getProvinces();
         ResultR resultR = new ResultR(ErrCode.SUCCESS);
         resultR.setData(provinceCities);
         return resultR;
     }
-
     @RequestMapping(value = "/getAllProvinceCitys", method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
     @ApiOperation(notes = "获得所有城市信息", value = "获得所有城市信息", httpMethod = "POST")
@@ -50,6 +47,5 @@ public class ProvinceCityController extends BaseController {
         resultR.setData(mapData);
         return resultR;
     }
-
 
 }

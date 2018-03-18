@@ -52,7 +52,7 @@ public class TProvinceCity {
     }
 
     public List<TProvinceCity> getChildList() {
-        return childList;
+        return this.childList;
     }
 
     public void setChildList(List<TProvinceCity> childList) {

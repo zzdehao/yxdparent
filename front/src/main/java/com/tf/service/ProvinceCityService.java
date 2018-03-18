@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Created by wugq on 2018/3/18.
  */
@@ -17,6 +18,7 @@ import java.util.Map;
 public class ProvinceCityService {
 
     private  static List<TProvinceCity> staticProvinces = new ArrayList<TProvinceCity>();
+    private  static Map<Integer,List<TProvinceCity>> staticCities = new HashMap<Integer,List<TProvinceCity>>();
     @Autowired
     private TProvinceCityMapper provinceCityMapper;
 
@@ -26,7 +28,7 @@ public class ProvinceCityService {
         cond.andLevelEqualTo(0);
         cityExample.setOrderByClause(" code asc");
         List<TProvinceCity> provinces = staticProvinces;
-        if(staticProvinces.size()==0){
+        if(provinces==null || provinces.size()==0){
               provinces = this.provinceCityMapper.selectByExample(cityExample);
               staticProvinces=provinces;
               return provinces;
@@ -41,8 +43,17 @@ public class ProvinceCityService {
         cond.andLevelEqualTo(1);
         cond.andParentIdEqualTo(pid);
         cityExample.setOrderByClause(" parent_id asc");
-        List<TProvinceCity> provinces = this.provinceCityMapper.selectByExample(cityExample);
-        return provinces;
+        //this.provinceCityMapper.selectByExample(cityExample);
+        List<TProvinceCity> citys = staticCities.get(pid);
+        if(citys==null||citys.size()==0){
+            citys = this.provinceCityMapper.selectByExample(cityExample);
+            if(citys!=null &&citys.size()>0) {
+                staticCities.put(pid, citys);
+            }
+            return citys;
+        }else {
+            return citys;
+        }
     }
     public TProvinceCity getProvinceCityById(Integer id){
         return this.provinceCityMapper.selectByPrimaryKey(id);
