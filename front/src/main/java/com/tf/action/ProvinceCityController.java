@@ -1,39 +1,53 @@
 package com.tf.action;
 
+import com.fasterxml.jackson.databind.deser.Deserializers;
+import com.tf.entity.TAdmin;
+import com.tf.entity.TProvinceCity;
+import com.tf.service.ProvinceCityService;
+import com.tf.utils.Result;
 import com.tf.utils.ResultR;
+import com.tf.web.config.ErrCode;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * @date:2018/01/02
- * @time:14:08
- * @author:Zeff
- * @description:description
- */
 @Api(value = "城市信息接口")
 @RestController
-@RequestMapping(value = "/provinceCity")
-public class ProvinceCityController {
+public class ProvinceCityController extends BaseController {
+    @Autowired
+    private ProvinceCityService provinceCityService;
 
-    @RequestMapping(value = "/getCityByLevel", method = RequestMethod.POST,
+    @RequestMapping(value = "/getAllProvinces", method = {RequestMethod.POST,RequestMethod.GET},
             produces = "application/json;charset=UTF-8")
-    @ApiOperation(notes = "通过level获取城市", value = "通过level获取城市", httpMethod = "POST")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "level", value = "等级", required = true, defaultValue = "0", dataType = "int", paramType = "query")
-    })
-    public ResultR getCityByLevel(@RequestParam(value = "level", defaultValue = "0", required = true) Integer level) throws Exception {
+    @ApiOperation(notes = "获得所有城市信息", value = "获得所有城市信息", httpMethod = "POST")
+    public ResultR getAllProvinces() throws Exception {
+        TAdmin current = getCurrent();
+        System.out.println("current:"+current.getId()+" phone:"+current.getTel());
 
-        ResultR resultR = new ResultR();
+        List<TProvinceCity> provinceCities = this.provinceCityService.getProvinces();
+        ResultR resultR = new ResultR(ErrCode.SUCCESS);
+        resultR.setData(provinceCities);
+        return resultR;
+    }
 
+    @RequestMapping(value = "/getAllProvinceCitys", method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ApiOperation(notes = "获得所有城市信息", value = "获得所有城市信息", httpMethod = "POST")
+    public Result getAllProvinceCitys() throws Exception {
+        List<TProvinceCity> provinceCities = this.provinceCityService.getProvinces();
+        List<TProvinceCity> mapData =new ArrayList<TProvinceCity>();
+        for(TProvinceCity province:provinceCities){
+            List<TProvinceCity> citys = this.provinceCityService.getAllCitysByPid(province.getId());
+            province.setChildList(citys);
+            mapData.add(province);
+        }
+        Result resultR = new Result(ErrCode.SUCCESS);
+        resultR.setData(mapData);
         return resultR;
     }
 

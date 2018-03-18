@@ -23,7 +23,8 @@ public class CommonController {
     @ResponseBody
     public Object batchQuery(@RequestParam List<Integer> typeList) throws Exception {
         List<BizImportBatch> list = this.importService.queryBatchByTypes(typeList);
-        Map<Integer, List<BizImportBatch>> importBatchMap = list.stream().collect(Collectors.groupingBy(BizImportBatch::getImportType, Collectors.toList()));
+        Map<Integer, List<BizImportBatch>> importBatchMap = list.stream()
+                .collect(Collectors.groupingBy(BizImportBatch::getImportType, Collectors.toList()));
         return importBatchMap;
     }
 

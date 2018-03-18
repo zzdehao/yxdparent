@@ -24,13 +24,13 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.1.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.27" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.14" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.3.0" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.3" />

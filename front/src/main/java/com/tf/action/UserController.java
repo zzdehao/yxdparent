@@ -1,9 +1,8 @@
 package com.tf.action;
-
 import com.alibaba.fastjson.JSONObject;
 import com.tf.entity.TAdmin;
 import com.tf.security.TokenAuthenticationService;
-import com.tf.service.MD5;
+import com.tf.utils.MD5;
 import com.tf.service.UserService;
 import com.tf.utils.ResultR;
 import com.tf.web.config.ErrCode;
@@ -13,15 +12,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 @Api(value = "用户相关接口")
 @RestController
-public class UserController {
+public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
@@ -60,6 +57,5 @@ public class UserController {
             }
         }
     }
-
 
 }

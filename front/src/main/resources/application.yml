@@ -1,11 +1,11 @@
 server:
-  port: 9000
+  port: 8000
   tomcat:
     max-threads: 1000
     uri-encoding: UTF-8
     basedir: ./log/tomcat
 #  ssl:
-#    key-store: classpath:tomcat.keystore
+#    key-store: classpath:api.ibluetech.club.jks
 #    key-store-password: 93j00056f2c
 #    key-store-type: JKS
 #    key-alias: api.ibluetech.club
@@ -31,7 +31,6 @@ logging:
   config: classpath:logback.xml
 
 mybatis:
-#  config-location: classpath:mybatis-config.xml
   type-aliases-package: com.tf.entity
   mapperLocations: classpath:com/tf/mapper/*.xml
 

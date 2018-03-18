@@ -1,4 +1,6 @@
 package com.tf.security;
+import com.tf.entity.TAdmin;
+import com.tf.utils.CurrentUser;
 import com.tf.utils.StringUtil;
 import com.tf.web.config.YxdConfig;
 import io.jsonwebtoken.*;
@@ -63,6 +65,14 @@ public class TokenAuthenticationService {
             request.setAttribute("phoneNum", phoneNum);
             request.setAttribute("permissionNames", permissionNames);
             request.setAttribute("username", username);
+            //设置用户
+            TAdmin admin = new TAdmin();
+            admin.setId(Integer.parseInt(userId.toString()));
+            admin.setTel(phoneNum);
+            admin.setTruename(username);
+            admin.setNickname(username);
+            CurrentUser.set(admin);
+
             // 返回验证令牌
             return (phoneNum != null) ?
                     new UsernamePasswordAuthenticationToken(phoneNum, userId) :

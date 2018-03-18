@@ -27,9 +27,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="front" target="1.5" />
+      <module name="front" target="1.8" />
       <module name="manager" target="1.8" />
-      <module name="yxdparent" target="1.5" />
+      <module name="yxdparent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

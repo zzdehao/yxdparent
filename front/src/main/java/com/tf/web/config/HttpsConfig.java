@@ -37,8 +37,8 @@ public class HttpsConfig {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
         connector.setPort(8080);
-        connector.setSecure(false);
-        connector.setRedirectPort(80);
+        connector.setSecure(true);
+        connector.setRedirectPort(8443);
         return connector;
     }
     //@Bean

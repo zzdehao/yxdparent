@@ -1,4 +1,6 @@
 package com.tf.entity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TProvinceCity {
     private Integer id;
@@ -49,6 +51,14 @@ public class TProvinceCity {
         return firstLetter;
     }
 
+    public List<TProvinceCity> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<TProvinceCity> childList) {
+        this.childList = childList;
+    }
+
     public void setFirstLetter(String firstLetter) {
         this.firstLetter = firstLetter == null ? null : firstLetter.trim();
     }
@@ -60,4 +70,7 @@ public class TProvinceCity {
     public void setLevel(Integer level) {
         this.level = level;
     }
+
+    private List<TProvinceCity> childList = new ArrayList<TProvinceCity>();
+
 }
