@@ -38,7 +38,7 @@ public class UserController {
                          @RequestParam(value = "pass", required = true) String pass) {
         ResultR r = new ResultR();
         TAdmin tAdmin = this.userService.getAdminByTel(phoneNum);
-        if(tAdmin!=null){
+        if(tAdmin==null){
             r.setErrCode(ErrCode.NO_EXISTS);
             return r;
         }else{
