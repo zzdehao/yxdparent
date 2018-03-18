@@ -1,0 +1,37 @@
+server:
+  port: 9000
+  tomcat:
+    max-threads: 1000
+    uri-encoding: UTF-8
+    basedir: ./log/tomcat
+#  ssl:
+#    key-store: classpath:tomcat.keystore
+#    key-store-password: 93j00056f2c
+#    key-store-type: JKS
+#    key-alias: api.ibluetech.club
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  #运行模式设定
+  profiles:
+    active: dev
+  #上传文件
+  http:
+    multipart:
+      max-file-size: 30Mb
+      max-request-size: 30Mb
+  #热部署
+  devtools:
+    restart:
+      enabled: true
+
+logging:
+  config: classpath:logback.xml
+
+mybatis:
+#  config-location: classpath:mybatis-config.xml
+  #实体类所做包,加入后xml中可以直接写类名
+  type-aliases-package: com.tf.entity
+  mapperLocations: classpath:mapper/*.xml

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tf.tadmin.mapper.AdminMapper">
+	<resultMap type="com.tf.tadmin.entity.Admin" id="adminMap">
+		<id column="id" property="id"/>
+		<result column="dept_id" property="deptId"/>
+        <result column="name" property="name"/>
+        <result column="nickname" property="nickname"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="store_name" property="storeName"/>
+        <result column="store_id" property="storeId"/>
+        <result column="province_code" property="provinceCode"/>
+        <result column="city_code" property="cityCode"/>
+        <result column="tel" property="tel"/>
+        <result column="truename" property="trueName"/>
+
+        <result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+        <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+        <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+        <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+        <result column="bus_typename" property="busTypename" jdbcType="VARCHAR" />
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+        <result column="tel2" property="tel2" jdbcType="VARCHAR" />
+        <result column="grid_code" property="gridCode" jdbcType="VARCHAR" />
+        <result column="grid_name" property="gridName" jdbcType="VARCHAR" />
+        <result column="duty_code" property="dutyCode" jdbcType="VARCHAR" />
+        <result column="duty_name" property="dutyName" jdbcType="VARCHAR" />
+        <result column="dataup_date" property="dataupDate" jdbcType="VARCHAR" />
+        <result column="qita1" property="qita1" jdbcType="VARCHAR" />
+        <result column="qita2" property="qita2" jdbcType="VARCHAR" />
+
+        <result column="blz1" property="blz1" jdbcType="VARCHAR" />
+        <result column="blz2" property="blz2" jdbcType="VARCHAR" />
+        <result column="blz3" property="blz3" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="fields">
+	create_time, create_user, update_time, update_user,
+	name, nickname, password,
+    dept_id, tel, email, status, remark, role_code, blz1, blz2, blz3, store_name, store_id,
+    user_type, truename, province_code, province_name, city_code, city_name, bus_typename,
+    dept_name, tel2, grid_code, grid_name, duty_code, duty_name, dataup_date, qita1,
+    qita2
+	</sql>
+	
+	<sql id="where">
+		<where>
+			<trim suffixOverrides="AND">
+				<if test="status!=null">
+					status = #{status} AND
+				</if>
+				<if test="q!=null and q!=''">
+					(name like '%${q}%' or nickname like '%${q}%' or tel like '%${q}%' or email like '%${q}%') and
+				</if>
+                <if test="isSuper!=null and isSuper!='1'">
+                    (role_code!='admin' AND role_code!='super') AND
+                </if>
+                <if test="provinceCode!=null and provinceCode!='1'">
+                    province_code=#{provinceCode} AND
+                </if>
+                <if test="cityCode!=null and cityCode!='1'">
+                    city_code=#{cityCode} AND
+                </if>
+                <if test="isAdmin!=null and isAdmin!=''">
+                    blz1 is null AND
+                </if>
+                <if test="onlyImport!=null and onlyImport!=''">
+                    blz1 is not null AND
+                </if>
+
+			</trim>
+		</where>
+	</sql>
+	
+	<select id="queryList" parameterType="map" resultMap="adminMap">
+		select id , <include refid="fields" /> from t_admin
+			<include refid="where"/>
+			order by id desc
+	</select>
+    <select id="queryPageList" parameterType="map" resultMap="adminMap">
+        select id , <include refid="fields" /> from t_admin
+        <include refid="where"/>
+        <include refid="com.tf.tadmin.mapper.BaseMapper.pageHelper"/>
+    </select>
+    <select id="pageCount" resultType="int" parameterType="map">
+        select count(1) from t_admin <include refid="where"/>
+    </select>
+	<select id="count" resultType="int" parameterType="map">
+		select count(1) from t_admin <include refid="where"/>
+	</select>
+	
+	<select id="queryById" parameterType="int" resultMap="adminMap">
+		select id ,<include refid="fields"/> from t_admin where id = #{id}
+	</select>
+	
+	<select id="queryByLogin" parameterType="string" resultMap="adminMap">
+		select id ,<include refid="fields"/> from t_admin
+        where (name = #{login} and role_code='super') or  (tel = #{login} and role_code!='super')
+	</select>
+
+    <select id="getByRoleCode" parameterType="Admin" resultMap="adminMap">
+        select id ,<include refid="fields"/> from
+        t_admin where
+        (name = #{name} or  tel = #{tel} or  email = #{email})
+        and role_code=#{roleCode}
+    </select>
+		
+	<insert id="insert" parameterType="Admin" useGeneratedKeys="true" keyProperty="id">
+		insert into t_admin(<include refid="fields"/>)
+        values(
+        #{create_time},
+        #{create_user},
+        #{update_time},
+        #{update_user},
+        #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
+        #{roleCode,jdbcType=VARCHAR}, #{blz1,jdbcType=VARCHAR}, #{blz2,jdbcType=VARCHAR},
+        #{blz3,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeId,jdbcType=INTEGER},
+        #{userType,jdbcType=INTEGER}, #{trueName,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR},
+        #{provinceName,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR},
+        #{busTypename,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{tel2,jdbcType=VARCHAR},
+        #{gridCode,jdbcType=VARCHAR}, #{gridName,jdbcType=VARCHAR}, #{dutyCode,jdbcType=VARCHAR},
+        #{dutyName,jdbcType=VARCHAR}, #{dataupDate,jdbcType=VARCHAR}, #{qita1,jdbcType=VARCHAR},
+        #{qita2,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="update" parameterType="Admin">
+		update t_admin
+		<set>
+            update_time = #{update_time},
+            update_user = #{update_user},
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null" >
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="deptId != null" >
+                dept_id = #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="tel != null" >
+                tel = #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="roleCode != null and roleCode!=''" >
+                role_code = #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="blz1 != null" >
+                blz1 = #{blz1,jdbcType=VARCHAR},
+            </if>
+            <if test="blz2 != null" >
+                blz2 = #{blz2,jdbcType=VARCHAR},
+            </if>
+            <if test="blz3 != null" >
+                blz3 = #{blz3,jdbcType=VARCHAR},
+            </if>
+            <if test="storeName != null" >
+                store_name = #{storeName,jdbcType=VARCHAR},
+            </if>
+            <if test="storeId != null" >
+                store_id = #{storeId,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null" >
+                user_type = #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="trueName != null" >
+                truename = #{trueName,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null" >
+                province_code = #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceName != null" >
+                province_name = #{provinceName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCode != null" >
+                city_code = #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityName != null" >
+                city_name = #{cityName,jdbcType=VARCHAR},
+            </if>
+            <if test="busTypename != null" >
+                bus_typename = #{busTypename,jdbcType=VARCHAR},
+            </if>
+            <if test="deptName != null" >
+                dept_name = #{deptName,jdbcType=VARCHAR},
+            </if>
+            <if test="tel2 != null" >
+                tel2 = #{tel2,jdbcType=VARCHAR},
+            </if>
+            <if test="gridCode != null" >
+                grid_code = #{gridCode,jdbcType=VARCHAR},
+            </if>
+            <if test="gridName != null" >
+                grid_name = #{gridName,jdbcType=VARCHAR},
+            </if>
+            <if test="dutyCode != null" >
+                duty_code = #{dutyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="dutyName != null" >
+                duty_name = #{dutyName,jdbcType=VARCHAR},
+            </if>
+            <if test="dataupDate != null" >
+                dataup_date = #{dataupDate,jdbcType=VARCHAR},
+            </if>
+            <if test="qita1 != null" >
+                qita1 = #{qita1,jdbcType=VARCHAR},
+            </if>
+            <if test="qita2 != null" >
+                qita2 = #{qita2,jdbcType=VARCHAR},
+            </if>
+        </set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from t_admin where id = #{id}
+	</delete>
+</mapper>  
