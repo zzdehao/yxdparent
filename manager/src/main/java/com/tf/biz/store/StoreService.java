@@ -87,6 +87,26 @@ public class StoreService {
             return null;
         }
     }
+    public BizStore getStoreByChannelCode(String channelCode){
+        BizStoreExample bizStoreExample = new BizStoreExample();
+        BizStoreExample.Criteria query=bizStoreExample.createCriteria().andChannelCodeEqualTo(channelCode);
+        List<BizStore> stores = this.bizStoreMapper.selectByExample(bizStoreExample);
+        if(stores!=null && stores.size()>0){
+            return stores.get(0);
+        }else{
+            return null;
+        }
+    }
+    public BizStore getStoreByStoreCode(String stroeCode){
+        BizStoreExample bizStoreExample = new BizStoreExample();
+        BizStoreExample.Criteria query=bizStoreExample.createCriteria().andStoreCodeEqualTo(stroeCode);
+        List<BizStore> stores = this.bizStoreMapper.selectByExample(bizStoreExample);
+        if(stores!=null && stores.size()>0){
+            return stores.get(0);
+        }else{
+            return null;
+        }
+    }
     private List<BizStore> buildStoreList(Sheet sheet,ImportEnum.ImportType importType) {
         List<BizStore> bizStoreList = new ArrayList<>(sheet.getLastRowNum() + 1);
         for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
@@ -120,6 +140,7 @@ public class StoreService {
                     bizStore.setChannelId(0); //渠道ID,暂时去掉
                     bizStore.setChannelCode(ccode); //渠道编码
 
+
                     bizStore.setProvinceName(ExcelUtil.getFromCell(row.getCell(i++)));
                     bizStore.setProvinceCode(getCityOrProvinceCode(bizStore.getProvinceName()));
                     bizStore.setCityName(ExcelUtil.getFromCell(row.getCell(i++))); //市
@@ -127,7 +148,8 @@ public class StoreService {
 
                     bizStore.setCompanyName(ExcelUtil.getFromCell(row.getCell(i++)));  //区县分公司名称
                     bizStore.setCompanyCode(ExcelUtil.getFromCell(row.getCell(i++)));  // 区县分公司编码
-                    bizStore.setChannelName(ExcelUtil.getFromCell(row.getCell(i++))); //渠道名称
+                    String channelName = ExcelUtil.getFromCell(row.getCell(i++));
+                    bizStore.setChannelName(channelName); //渠道名称
                     String channelType=ExcelUtil.getFromCell(row.getCell(i++));
                     if("自有渠道".equals(channelType)) {
                         bizStore.setChannelType(ImportEnum.ChannelType.SELF.getCode()); //渠道类型
@@ -156,7 +178,9 @@ public class StoreService {
                     //todo 巡店人姓名和巡店人电话
                     bizStore.setLongitude("0"); //经度
                     bizStore.setLatitude("0"); //纬度
-
+                    //自有渠道，不存在店铺名称和店铺编号，利用渠道编号和渠道编码填充
+                    bizStore.setStoreCode(ccode);
+                    bizStore.setStoreName(channelName);
                     bizStoreList.add(bizStore);
                 }
 
@@ -171,6 +195,7 @@ public class StoreService {
                  区县分公司编码
                  渠道名称
                  渠道类型
+                 店铺编号
                  店铺名称
                  详细地址
                  备注
@@ -207,6 +232,7 @@ public class StoreService {
 
                     }
                     //diff
+                    bizStore.setStoreCode(ExcelUtil.getFromCell(row.getCell(i++))); //店铺编号
                     bizStore.setStoreName(ExcelUtil.getFromCell(row.getCell(i++))); //店铺名称
                     bizStore.setAddressDetail(ExcelUtil.getFromCell(row.getCell(i++))); //详细地址
                     bizStore.setRemark(ExcelUtil.getFromCell(row.getCell(i++)));//备注
@@ -223,6 +249,7 @@ public class StoreService {
                     //todo 巡店人姓名和巡店人电话
                     bizStore.setLongitude("0"); //经度
                     bizStore.setLatitude("0"); //纬度
+
 
                     bizStoreList.add(bizStore);
                 }
@@ -262,6 +289,7 @@ public class StoreService {
 
                     bizStore.setCompanyName(ExcelUtil.getFromCell(row.getCell(i++)));  //区县分公司名称
                     bizStore.setCompanyCode(ExcelUtil.getFromCell(row.getCell(i++)));  // 区县分公司编码
+                    String channelName = ExcelUtil.getFromCell(row.getCell(i++));
                     bizStore.setChannelName(ExcelUtil.getFromCell(row.getCell(i++))); //渠道名称
 
                     String channelType=ExcelUtil.getFromCell(row.getCell(i++));
@@ -289,7 +317,9 @@ public class StoreService {
                     //todo 巡店人姓名和巡店人电话
                     bizStore.setLongitude("0"); //经度
                     bizStore.setLatitude("0"); //纬度
-
+                    //小微不存在店铺名称和店铺编号，利用渠道编号和渠道编码填充
+                    bizStore.setStoreCode(ccode);
+                    bizStore.setStoreName(channelName);
                     bizStoreList.add(bizStore);
                 }
             }

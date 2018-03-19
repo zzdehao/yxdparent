@@ -75,6 +75,24 @@
 			<div class="col-4"></div>
 		</div>
 		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>店铺编码：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text"
+					   value="${store.storeCode}" placeholder=""
+					   id="storeCode" name="storeCode">
+			</div>
+			<div class="col-4"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>店铺名称：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text"
+					   value="${store.storeName}" placeholder=""
+					   id="storeName" name="storeName">
+			</div>
+			<div class="col-4"></div>
+		</div>
+		<div class="row cl">
 			<label class="form-label col-3"><span class="c-red">*</span>平台商编码：</label>
 			<div class="formControls col-5">
 				<input type="text" class="input-text"
