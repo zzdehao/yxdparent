@@ -1,6 +1,9 @@
 #删除文件位置
 yxd:
-  uploadPath: D:/var/uploaded_files/
+  uploadPath: D://images
+  imageUrl: http://www.baidu.com/
+  imageUrlPreffix: /images/
+
 #日志
 logging:
   level:

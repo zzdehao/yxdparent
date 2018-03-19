@@ -1,5 +1,6 @@
 yxd:
-  uploadPath: /var/uploaded_files/
+  uploadPath: D://images
+  imageUrl: http://www.baidu.com/
 logging:
   level:
     root: error

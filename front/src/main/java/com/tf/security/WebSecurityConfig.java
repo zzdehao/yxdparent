@@ -43,6 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/springfox-swagger-ui/lib/*.js",
                         "/webjars/springfox-swagger-ui/css/*.css",
                         "/webjars/springfox-swagger-ui/*.js").permitAll()
+
+                .antMatchers("/check/**").permitAll()
+                .antMatchers("/check/uploadImage").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
