@@ -71,6 +71,10 @@ public class CheckService {
 
     public void addDetail(BizCheckDetail checkDetail){
         this.bizCheckDetailMapper.insertSelective(checkDetail);
+        BizCheckPlan checkPlan = new BizCheckPlan();
+        checkPlan.setId(checkDetail.getPlanId());
+        checkPlan.setCheckStatus(2);
+        this.bizCheckPlanMapper.updateByPrimaryKey(checkPlan);
     }
 
 }

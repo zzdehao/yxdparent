@@ -9,29 +9,20 @@ import com.tf.service.CheckService;
 import com.tf.utils.ResultR;
 import com.tf.utils.UUIDGenerator;
 import com.tf.web.config.ErrCode;
-import com.tf.web.config.YxdConfig;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
-import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.InputStream;
-import java.util.List;
 
 @Api(value = "巡店API")
 @RestController
 public class CheckController {
+
     //上传路径
     @Value(value="${yxd.uploadPath}")
     private String uploadPath;
@@ -73,7 +64,7 @@ public class CheckController {
         return r;
     }
 
-    @ApiOperation(notes = "获取计划详情", value = "获取计划详情", httpMethod = "POST")
+    @ApiOperation(notes = "提交巡检信息", value = "提交巡检信息", httpMethod = "POST")
     @RequestMapping(value = "/check/plan/check", method = {RequestMethod.POST})
     public ResultR addCheck(@RequestBody BizCheckDetail checkDetail) {
         ResultR r = new ResultR();
