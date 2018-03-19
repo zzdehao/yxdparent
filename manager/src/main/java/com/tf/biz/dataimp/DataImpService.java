@@ -14,6 +14,7 @@ import com.tf.biz.imp.entity.BizImportBatch;
 import com.tf.biz.imp.entity.BizImportBatchExample;
 import com.tf.biz.imp.mapper.BizImportBatchMapper;
 import com.tf.biz.imp.pojo.FilePath;
+import com.tf.biz.store.StoreService;
 import com.tf.biz.store.entity.BizStore;
 import com.tf.biz.store.entity.BizStoreExample;
 import com.tf.biz.store.mapper.BizStoreMapper;
@@ -35,7 +36,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -71,6 +71,8 @@ public class DataImpService extends BaseService {
     private BizStoreMapper bizStoreMapper;
     @Autowired
     private BizCheckPlanMapper checkPlanMapper;
+    @Autowired
+    private StoreService storeService;
 
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -377,14 +379,21 @@ public class DataImpService extends BaseService {
                 plan.setChannelType(importType.getCode());
                 plan.setChannelCode((String) data.get("var2"));
                 plan.setChannelName((String) data.get("var3"));
+                //店铺编码
+                String storeCode = (String) data.get("var4");
                 plan.setStoreCode((String) data.get("var4"));
                 plan.setStoreName((String) data.get("var5"));
                 plan.setStoreAddress((String) data.get("var6"));
                 plan.setStoreTypeName(importType.getTypeName());
                 plan.setCheckUserName((String) data.get("var9"));
                 plan.setChannelUserTel((String) data.get("var10"));
-                System.out.println("checkEndDate:" + plan.getCheckEndDate());
-                planData.add(plan);
+                //店铺存在
+                BizStore store = storeService.getStoreByStoreCode(storeCode);
+                if(store!=null) {
+                    plan.setStoreId(Integer.parseInt(store.getId().toString()));
+                    planData.add(plan);
+
+                }
             }
             //保存数据
             final Date now = new Date();
