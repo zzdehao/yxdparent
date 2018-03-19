@@ -10,6 +10,8 @@ import com.tf.utils.ResultR;
 import com.tf.utils.UUIDGenerator;
 import com.tf.web.config.ErrCode;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.Date;
 
 @Api(value = "巡店API")
 @RestController
-public class CheckController {
+public class CheckController extends BaseController{
 
     //上传路径
     @Value(value="${yxd.uploadPath}")
@@ -37,12 +40,17 @@ public class CheckController {
     private CheckService checkService;
 
     @ApiOperation(notes = "获取计划列表", value = "获取计划列表", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "token",
+                    required = true, dataType = "String", paramType = "header"),
+    })
     @RequestMapping(value = "/check/plan/list/{status}", method = {RequestMethod.GET})
     public ResultR getPlanList(@PathVariable Integer status,
                                @RequestHeader Integer limit, @RequestHeader Integer offset) {
         ResultR r = new ResultR();
         BizCheckPlanExample example = new BizCheckPlanExample();
-        example.createCriteria().andCheckStatusEqualTo(status).andCheckUseridEqualTo(1);
+
+        example.createCriteria().andCheckStatusEqualTo(status).andCheckUseridEqualTo(this.getCurrent().getId());
         example.setOffset(offset);
         example.setLimit(limit);
         example.setOrderByClause("check_start_date");
@@ -54,6 +62,10 @@ public class CheckController {
     }
 
     @ApiOperation(notes = "获取计划详情", value = "获取计划详情", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "token",
+                    required = true, dataType = "String", paramType = "header"),
+    })
     @RequestMapping(value = "/check/plan/{id}", method = {RequestMethod.GET})
     public ResultR getPlan(@PathVariable Long id) {
         ResultR r = new ResultR();
@@ -65,9 +77,17 @@ public class CheckController {
     }
 
     @ApiOperation(notes = "提交巡检信息", value = "提交巡检信息", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "token",
+                    required = true, dataType = "String", paramType = "header"),
+    })
     @RequestMapping(value = "/check/plan/check", method = {RequestMethod.POST})
     public ResultR addCheck(@RequestBody BizCheckDetail checkDetail) {
         ResultR r = new ResultR();
+        checkDetail.setCreateTime(new Date());
+        checkDetail.setCheckUserId(this.getCurrent().getId().longValue());
+        checkDetail.setCheckUserName(this.getCurrent().getName());
+        checkDetail.setCheckUserPhone(this.getCurrent().getTel());
         this.checkService.addDetail(checkDetail);
         return r;
     }
@@ -78,8 +98,11 @@ public class CheckController {
      * @return
      */
     @ApiOperation(notes = "上传图片", value = "上传图片", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "token",
+                    required = true, dataType = "String", paramType = "header"),
+    })
     @RequestMapping(value = "/check/uploadImage", method = {RequestMethod.POST})
-    @ResponseBody
     public ResultR uploadImage(@RequestParam MultipartFile file){
         String fileName = UUIDGenerator.getUUID();
         String oldName = file.getOriginalFilename();

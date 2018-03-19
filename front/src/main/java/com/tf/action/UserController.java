@@ -27,9 +27,9 @@ public class UserController extends BaseController {
     @ApiOperation(notes = "登录", value = "查询用户", httpMethod = "POST")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "phoneNum", value = "手机号",
-                required = true, dataType = "String", paramType = "String"),
+                required = true, dataType = "String", paramType = "query"),
         @ApiImplicitParam(name = "pass", value = "密码",
-                required = true, dataType = "String", paramType = "String")
+                required = true, dataType = "String", paramType = "query")
     })
     public ResultR login(@RequestParam(value = "phoneNum", required = true) String phoneNum,
                          @RequestParam(value = "pass", required = true) String pass) {
