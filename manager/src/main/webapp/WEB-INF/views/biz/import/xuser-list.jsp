@@ -32,6 +32,7 @@
         <tr class="text-c">
             <th width="60">批次</th>
             <th width="60">用户名</th>
+            <th width="60">姓名</th>
             <th width="80">手机号</th>
             <th width="80">省</th>
             <th width="80">城市</th>
@@ -52,6 +53,7 @@
     {{#each rows}}
     <tr class="text-c">
         <td>{{blz1}}</td>
+        <td>{{trueName}}</td>
         <td>{{name}}</td>
         <td>{{tel}}</td>
         <td>{{provinceName}}</td>

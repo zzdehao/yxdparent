@@ -34,14 +34,28 @@
 		<div class="row cl">
 			<label class="form-label col-3"><span class="c-red">*</span>姓名：</label>
 			<div class="formControls col-5">
-				<input type="text" class="input-text" readonly value="${xuser.trueName}" placeholder="" id="trueName" name="trueName" datatype="*2-16" nullmsg="姓名不能为空">
+				<c:if test="${not empty xuser.id}">
+				<input type="text" class="input-text" readonly value="${xuser.trueName}"
+					   placeholder="" id="trueName" name="trueName" datatype="*2-16" nullmsg="姓名不能为空">
+				</c:if>
+				<c:if test="${empty xuser.id}">
+					<input type="text" class="input-text"  value="${xuser.trueName}"
+						   placeholder="" id="trueName" name="trueName" datatype="*2-16" nullmsg="姓名不能为空">
+				</c:if>
 			</div>
 			<div class="col-4"> </div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-3"><span class="c-red">*</span>账号：</label>
 			<div class="formControls col-5">
-				<input type="text" class="input-text" readonly value="${xuser.name}" placeholder="" id="name" name="name" datatype="*5-16" nullmsg="账号不能为空">
+				<c:if test="${not empty xuser.id}">
+				<input type="text" class="input-text" readonly
+					   value="${xuser.name}" placeholder="" id="name" name="name" datatype="*5-16" nullmsg="账号不能为空">
+				</c:if>
+				<c:if test="${empty xuser.id}">
+					<input type="text" class="input-text"
+						   value="${xuser.name}" placeholder="" id="name" name="name" datatype="*5-16" nullmsg="账号不能为空">
+				</c:if>
 			</div>
 			<div class="col-4"> </div>
 		</div>
@@ -98,8 +112,8 @@
 				&nbsp;&nbsp;
 				<input class="btn btn-primary radius" onclick="javascript:backgo();" type="button" value="&nbsp;&nbsp;返回&nbsp;&nbsp;">
 			</div>
-			</div>
 		</div>
+		<input type="hidden" name="blz1" id="blz1" value="111">
 	</form>
 </div>
 <%@include file="/footer.jsp" %>

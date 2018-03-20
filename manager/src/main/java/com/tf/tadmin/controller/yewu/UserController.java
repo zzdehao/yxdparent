@@ -79,7 +79,8 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 保存
+     * 保存巡店人员
+     * //todo保存人员同时增加默认角色
      * @param admin
      * @return
      */
@@ -100,7 +101,12 @@ public class UserController extends BaseController {
         if(!this.adminService.uniquenessCheck(Constants.T_ADMIN, "email", admin.getEmail(), id, isModify) ){
             return new Message(false, "邮箱已经存在!") ;
         }
-
+        if(StringUtils.isEmpty(admin.getRoleCode())){
+            admin.setRoleCode("general");
+        }
+        if(!StringUtils.isEmpty(admin.getPassword())){
+            admin.setPassword(MD5.getMD5(admin.getPassword()));
+        }
         int result = 0 ;
         try {
             if (isModify) {
@@ -108,7 +114,7 @@ public class UserController extends BaseController {
             } else {
                 result = this.adminService.add(admin);
             }
-            this.roleService.saveAllRole(admin.getRoles(), admin.getId());
+            //this.roleService.saveAllRole(admin.getRoles(), admin.getId());
         }catch (Exception ex){
             ex.printStackTrace();
             result=0;
