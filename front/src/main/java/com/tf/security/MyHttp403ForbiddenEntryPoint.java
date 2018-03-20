@@ -15,9 +15,9 @@ public class MyHttp403ForbiddenEntryPoint implements AuthenticationEntryPoint {
     }
 
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException arg2) throws IOException, ServletException {
-        ResultR resultR = new ResultR(ErrCode.NO_LOGIN);
-        response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getOutputStream().println(resultR.getResult());
+//        ResultR resultR = new ResultR(ErrCode.NO_LOGIN);
+//        response.setContentType("application/json");
+//        response.setStatus(HttpServletResponse.SC_OK);
+//        response.getOutputStream().println(resultR.getResult());
     }
 }
