@@ -49,4 +49,20 @@ public class ProvinceCityController extends BaseController {
         return resultR;
     }
 
+    @RequestMapping(value = "/district/tree", method = {RequestMethod.POST,RequestMethod.GET},
+            produces = "application/json;charset=UTF-8")
+    @ApiOperation(notes = "获得所有地区信息", value = "获得所有地区信息", httpMethod = "GET")
+    public Result getAllDistrictTree() throws Exception {
+        List<TProvinceCity> provinceCities = StaticDataMap.staticProvinces;
+        List<TProvinceCity> mapData =new ArrayList<TProvinceCity>();
+        for(TProvinceCity province:provinceCities){
+            List<TProvinceCity> citys = this.provinceCityService.getAllCitysByPid(province.getId());
+            province.setChildList(citys);
+            mapData.add(province);
+        }
+        Result resultR = new Result(ErrCode.SUCCESS);
+        resultR.setData(mapData);
+        return resultR;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.tf.service;
 import com.tf.entity.TProvinceCity;
 import com.tf.entity.TProvinceCityExample;
 import com.tf.mapper.TProvinceCityMapper;
+import com.tf.param.District;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +60,16 @@ public class ProvinceCityService {
         return this.provinceCityMapper.selectByPrimaryKey(id);
     }
 
+    public List<District> getAllDistrictTree(){
+        TProvinceCityExample example = new TProvinceCityExample();
+        example.setOrderByClause("code");
+        List<TProvinceCity> list = this.provinceCityMapper.selectByExample(example);
+        List<District> treeList = new ArrayList();
+        list.forEach(d -> {
 
+        });
+        return treeList;
+    }
 
 
 
