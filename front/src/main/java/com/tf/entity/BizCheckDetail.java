@@ -137,6 +137,16 @@ public class BizCheckDetail {
 
     private String storeGuitaiImage2;
 
+    private Integer tingdianNameOk;
+
+    private String tingdianName;
+
+    private Integer bizCount;
+
+    private String otherArea;
+
+    private Integer existTerminalOk;
+
     public Long getId() {
         return id;
     }
@@ -671,5 +681,45 @@ public class BizCheckDetail {
 
     public void setStoreGuitaiImage2(String storeGuitaiImage2) {
         this.storeGuitaiImage2 = storeGuitaiImage2 == null ? null : storeGuitaiImage2.trim();
+    }
+
+    public Integer getTingdianNameOk() {
+        return tingdianNameOk;
+    }
+
+    public void setTingdianNameOk(Integer tingdianNameOk) {
+        this.tingdianNameOk = tingdianNameOk;
+    }
+
+    public String getTingdianName() {
+        return tingdianName;
+    }
+
+    public void setTingdianName(String tingdianName) {
+        this.tingdianName = tingdianName == null ? null : tingdianName.trim();
+    }
+
+    public Integer getBizCount() {
+        return bizCount;
+    }
+
+    public void setBizCount(Integer bizCount) {
+        this.bizCount = bizCount;
+    }
+
+    public String getOtherArea() {
+        return otherArea;
+    }
+
+    public void setOtherArea(String otherArea) {
+        this.otherArea = otherArea == null ? null : otherArea.trim();
+    }
+
+    public Integer getExistTerminalOk() {
+        return existTerminalOk;
+    }
+
+    public void setExistTerminalOk(Integer existTerminalOk) {
+        this.existTerminalOk = existTerminalOk;
     }
 }

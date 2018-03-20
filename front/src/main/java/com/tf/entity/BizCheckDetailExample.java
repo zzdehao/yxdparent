@@ -4334,6 +4334,326 @@ public class BizCheckDetailExample {
             addCriterion("store_guitai_image2 not between", value1, value2, "storeGuitaiImage2");
             return (Criteria) this;
         }
+
+        public Criteria andTingdianNameOkIsNull() {
+            addCriterion("tingdian_name_ok is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkIsNotNull() {
+            addCriterion("tingdian_name_ok is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkEqualTo(Integer value) {
+            addCriterion("tingdian_name_ok =", value, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkNotEqualTo(Integer value) {
+            addCriterion("tingdian_name_ok <>", value, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkGreaterThan(Integer value) {
+            addCriterion("tingdian_name_ok >", value, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkGreaterThanOrEqualTo(Integer value) {
+            addCriterion("tingdian_name_ok >=", value, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkLessThan(Integer value) {
+            addCriterion("tingdian_name_ok <", value, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkLessThanOrEqualTo(Integer value) {
+            addCriterion("tingdian_name_ok <=", value, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkIn(List<Integer> values) {
+            addCriterion("tingdian_name_ok in", values, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkNotIn(List<Integer> values) {
+            addCriterion("tingdian_name_ok not in", values, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkBetween(Integer value1, Integer value2) {
+            addCriterion("tingdian_name_ok between", value1, value2, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameOkNotBetween(Integer value1, Integer value2) {
+            addCriterion("tingdian_name_ok not between", value1, value2, "tingdianNameOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameIsNull() {
+            addCriterion("tingdian_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameIsNotNull() {
+            addCriterion("tingdian_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameEqualTo(String value) {
+            addCriterion("tingdian_name =", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameNotEqualTo(String value) {
+            addCriterion("tingdian_name <>", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameGreaterThan(String value) {
+            addCriterion("tingdian_name >", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameGreaterThanOrEqualTo(String value) {
+            addCriterion("tingdian_name >=", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameLessThan(String value) {
+            addCriterion("tingdian_name <", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameLessThanOrEqualTo(String value) {
+            addCriterion("tingdian_name <=", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameLike(String value) {
+            addCriterion("tingdian_name like", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameNotLike(String value) {
+            addCriterion("tingdian_name not like", value, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameIn(List<String> values) {
+            addCriterion("tingdian_name in", values, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameNotIn(List<String> values) {
+            addCriterion("tingdian_name not in", values, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameBetween(String value1, String value2) {
+            addCriterion("tingdian_name between", value1, value2, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andTingdianNameNotBetween(String value1, String value2) {
+            addCriterion("tingdian_name not between", value1, value2, "tingdianName");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountIsNull() {
+            addCriterion("biz_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountIsNotNull() {
+            addCriterion("biz_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountEqualTo(Integer value) {
+            addCriterion("biz_count =", value, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountNotEqualTo(Integer value) {
+            addCriterion("biz_count <>", value, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountGreaterThan(Integer value) {
+            addCriterion("biz_count >", value, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("biz_count >=", value, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountLessThan(Integer value) {
+            addCriterion("biz_count <", value, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountLessThanOrEqualTo(Integer value) {
+            addCriterion("biz_count <=", value, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountIn(List<Integer> values) {
+            addCriterion("biz_count in", values, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountNotIn(List<Integer> values) {
+            addCriterion("biz_count not in", values, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountBetween(Integer value1, Integer value2) {
+            addCriterion("biz_count between", value1, value2, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBizCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("biz_count not between", value1, value2, "bizCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaIsNull() {
+            addCriterion("other_area is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaIsNotNull() {
+            addCriterion("other_area is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaEqualTo(String value) {
+            addCriterion("other_area =", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaNotEqualTo(String value) {
+            addCriterion("other_area <>", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaGreaterThan(String value) {
+            addCriterion("other_area >", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaGreaterThanOrEqualTo(String value) {
+            addCriterion("other_area >=", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaLessThan(String value) {
+            addCriterion("other_area <", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaLessThanOrEqualTo(String value) {
+            addCriterion("other_area <=", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaLike(String value) {
+            addCriterion("other_area like", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaNotLike(String value) {
+            addCriterion("other_area not like", value, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaIn(List<String> values) {
+            addCriterion("other_area in", values, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaNotIn(List<String> values) {
+            addCriterion("other_area not in", values, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaBetween(String value1, String value2) {
+            addCriterion("other_area between", value1, value2, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherAreaNotBetween(String value1, String value2) {
+            addCriterion("other_area not between", value1, value2, "otherArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkIsNull() {
+            addCriterion("exist_terminal_ok is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkIsNotNull() {
+            addCriterion("exist_terminal_ok is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkEqualTo(Integer value) {
+            addCriterion("exist_terminal_ok =", value, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkNotEqualTo(Integer value) {
+            addCriterion("exist_terminal_ok <>", value, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkGreaterThan(Integer value) {
+            addCriterion("exist_terminal_ok >", value, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkGreaterThanOrEqualTo(Integer value) {
+            addCriterion("exist_terminal_ok >=", value, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkLessThan(Integer value) {
+            addCriterion("exist_terminal_ok <", value, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkLessThanOrEqualTo(Integer value) {
+            addCriterion("exist_terminal_ok <=", value, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkIn(List<Integer> values) {
+            addCriterion("exist_terminal_ok in", values, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkNotIn(List<Integer> values) {
+            addCriterion("exist_terminal_ok not in", values, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkBetween(Integer value1, Integer value2) {
+            addCriterion("exist_terminal_ok between", value1, value2, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andExistTerminalOkNotBetween(Integer value1, Integer value2) {
+            addCriterion("exist_terminal_ok not between", value1, value2, "existTerminalOk");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

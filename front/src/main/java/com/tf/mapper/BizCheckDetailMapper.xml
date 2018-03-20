@@ -69,6 +69,11 @@
     <result column="stroe_linjie_image3" jdbcType="VARCHAR" property="stroeLinjieImage3" />
     <result column="store_guitai_image1" jdbcType="VARCHAR" property="storeGuitaiImage1" />
     <result column="store_guitai_image2" jdbcType="VARCHAR" property="storeGuitaiImage2" />
+    <result column="tingdian_name_ok" jdbcType="INTEGER" property="tingdianNameOk" />
+    <result column="tingdian_name" jdbcType="VARCHAR" property="tingdianName" />
+    <result column="biz_count" jdbcType="INTEGER" property="bizCount" />
+    <result column="other_area" jdbcType="VARCHAR" property="otherArea" />
+    <result column="exist_terminal_ok" jdbcType="INTEGER" property="existTerminalOk" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -142,7 +147,8 @@
     store_zq_vivook, store_zq_huaweiok, store_zq_samsongok, store_zq_appleok, store_zq_meizuok, 
     store_zq_2g3gok, store_kccheck_outcount, store_kccheck_selfcount, store_front_image1, 
     stroe_front_image2, stroe_linjie_image1, stroe_linjie_image2, stroe_linjie_image3, 
-    store_guitai_image1, store_guitai_image2
+    store_guitai_image1, store_guitai_image2, tingdian_name_ok, tingdian_name, biz_count, 
+    other_area, exist_terminal_ok
   </sql>
   <select id="selectByExample" parameterType="com.tf.entity.BizCheckDetailExample" resultMap="BaseResultMap">
     select
@@ -207,7 +213,9 @@
       store_kccheck_outcount, store_kccheck_selfcount, 
       store_front_image1, stroe_front_image2, stroe_linjie_image1, 
       stroe_linjie_image2, stroe_linjie_image3, store_guitai_image1, 
-      store_guitai_image2)
+      store_guitai_image2, tingdian_name_ok, tingdian_name, 
+      biz_count, other_area, exist_terminal_ok
+      )
     values (#{planId,jdbcType=BIGINT}, #{planBatchId,jdbcType=BIGINT}, #{planBatchName,jdbcType=VARCHAR}, 
       #{storeId,jdbcType=BIGINT}, #{storeCode,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, 
       #{storeAddress,jdbcType=VARCHAR}, #{checkTime,jdbcType=TIMESTAMP}, #{checkUserId,jdbcType=BIGINT}, 
@@ -232,7 +240,9 @@
       #{storeKccheckOutcount,jdbcType=INTEGER}, #{storeKccheckSelfcount,jdbcType=INTEGER}, 
       #{storeFrontImage1,jdbcType=VARCHAR}, #{stroeFrontImage2,jdbcType=VARCHAR}, #{stroeLinjieImage1,jdbcType=VARCHAR}, 
       #{stroeLinjieImage2,jdbcType=VARCHAR}, #{stroeLinjieImage3,jdbcType=VARCHAR}, #{storeGuitaiImage1,jdbcType=VARCHAR}, 
-      #{storeGuitaiImage2,jdbcType=VARCHAR})
+      #{storeGuitaiImage2,jdbcType=VARCHAR}, #{tingdianNameOk,jdbcType=INTEGER}, #{tingdianName,jdbcType=VARCHAR}, 
+      #{bizCount,jdbcType=INTEGER}, #{otherArea,jdbcType=VARCHAR}, #{existTerminalOk,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tf.entity.BizCheckDetail" useGeneratedKeys="true">
     insert into biz_check_detail
@@ -435,6 +445,21 @@
       <if test="storeGuitaiImage2 != null">
         store_guitai_image2,
       </if>
+      <if test="tingdianNameOk != null">
+        tingdian_name_ok,
+      </if>
+      <if test="tingdianName != null">
+        tingdian_name,
+      </if>
+      <if test="bizCount != null">
+        biz_count,
+      </if>
+      <if test="otherArea != null">
+        other_area,
+      </if>
+      <if test="existTerminalOk != null">
+        exist_terminal_ok,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="planId != null">
@@ -634,6 +659,21 @@
       </if>
       <if test="storeGuitaiImage2 != null">
         #{storeGuitaiImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="tingdianNameOk != null">
+        #{tingdianNameOk,jdbcType=INTEGER},
+      </if>
+      <if test="tingdianName != null">
+        #{tingdianName,jdbcType=VARCHAR},
+      </if>
+      <if test="bizCount != null">
+        #{bizCount,jdbcType=INTEGER},
+      </if>
+      <if test="otherArea != null">
+        #{otherArea,jdbcType=VARCHAR},
+      </if>
+      <if test="existTerminalOk != null">
+        #{existTerminalOk,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -847,6 +887,21 @@
       <if test="record.storeGuitaiImage2 != null">
         store_guitai_image2 = #{record.storeGuitaiImage2,jdbcType=VARCHAR},
       </if>
+      <if test="record.tingdianNameOk != null">
+        tingdian_name_ok = #{record.tingdianNameOk,jdbcType=INTEGER},
+      </if>
+      <if test="record.tingdianName != null">
+        tingdian_name = #{record.tingdianName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizCount != null">
+        biz_count = #{record.bizCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.otherArea != null">
+        other_area = #{record.otherArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.existTerminalOk != null">
+        exist_terminal_ok = #{record.existTerminalOk,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -920,7 +975,12 @@
       stroe_linjie_image2 = #{record.stroeLinjieImage2,jdbcType=VARCHAR},
       stroe_linjie_image3 = #{record.stroeLinjieImage3,jdbcType=VARCHAR},
       store_guitai_image1 = #{record.storeGuitaiImage1,jdbcType=VARCHAR},
-      store_guitai_image2 = #{record.storeGuitaiImage2,jdbcType=VARCHAR}
+      store_guitai_image2 = #{record.storeGuitaiImage2,jdbcType=VARCHAR},
+      tingdian_name_ok = #{record.tingdianNameOk,jdbcType=INTEGER},
+      tingdian_name = #{record.tingdianName,jdbcType=VARCHAR},
+      biz_count = #{record.bizCount,jdbcType=INTEGER},
+      other_area = #{record.otherArea,jdbcType=VARCHAR},
+      exist_terminal_ok = #{record.existTerminalOk,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -1126,6 +1186,21 @@
       <if test="storeGuitaiImage2 != null">
         store_guitai_image2 = #{storeGuitaiImage2,jdbcType=VARCHAR},
       </if>
+      <if test="tingdianNameOk != null">
+        tingdian_name_ok = #{tingdianNameOk,jdbcType=INTEGER},
+      </if>
+      <if test="tingdianName != null">
+        tingdian_name = #{tingdianName,jdbcType=VARCHAR},
+      </if>
+      <if test="bizCount != null">
+        biz_count = #{bizCount,jdbcType=INTEGER},
+      </if>
+      <if test="otherArea != null">
+        other_area = #{otherArea,jdbcType=VARCHAR},
+      </if>
+      <if test="existTerminalOk != null">
+        exist_terminal_ok = #{existTerminalOk,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -1196,7 +1271,12 @@
       stroe_linjie_image2 = #{stroeLinjieImage2,jdbcType=VARCHAR},
       stroe_linjie_image3 = #{stroeLinjieImage3,jdbcType=VARCHAR},
       store_guitai_image1 = #{storeGuitaiImage1,jdbcType=VARCHAR},
-      store_guitai_image2 = #{storeGuitaiImage2,jdbcType=VARCHAR}
+      store_guitai_image2 = #{storeGuitaiImage2,jdbcType=VARCHAR},
+      tingdian_name_ok = #{tingdianNameOk,jdbcType=INTEGER},
+      tingdian_name = #{tingdianName,jdbcType=VARCHAR},
+      biz_count = #{bizCount,jdbcType=INTEGER},
+      other_area = #{otherArea,jdbcType=VARCHAR},
+      exist_terminal_ok = #{existTerminalOk,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
