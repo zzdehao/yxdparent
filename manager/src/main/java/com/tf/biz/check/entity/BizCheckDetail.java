@@ -137,15 +137,17 @@ public class BizCheckDetail {
 
     private String storeGuitaiImage2;
 
-    private Integer tingdianNameOk;
-
-    private String tingdianName;
+    private String storeRealname;
 
     private Integer bizCount;
 
     private String otherArea;
 
     private Integer existTerminalOk;
+
+    private String storeCheckCountryCode;
+
+    private String storeCheckCountryName;
 
     public Long getId() {
         return id;
@@ -683,20 +685,12 @@ public class BizCheckDetail {
         this.storeGuitaiImage2 = storeGuitaiImage2 == null ? null : storeGuitaiImage2.trim();
     }
 
-    public Integer getTingdianNameOk() {
-        return tingdianNameOk;
+    public String getStoreRealname() {
+        return storeRealname;
     }
 
-    public void setTingdianNameOk(Integer tingdianNameOk) {
-        this.tingdianNameOk = tingdianNameOk;
-    }
-
-    public String getTingdianName() {
-        return tingdianName;
-    }
-
-    public void setTingdianName(String tingdianName) {
-        this.tingdianName = tingdianName == null ? null : tingdianName.trim();
+    public void setStoreRealname(String storeRealname) {
+        this.storeRealname = storeRealname == null ? null : storeRealname.trim();
     }
 
     public Integer getBizCount() {
@@ -721,5 +715,21 @@ public class BizCheckDetail {
 
     public void setExistTerminalOk(Integer existTerminalOk) {
         this.existTerminalOk = existTerminalOk;
+    }
+
+    public String getStoreCheckCountryCode() {
+        return storeCheckCountryCode;
+    }
+
+    public void setStoreCheckCountryCode(String storeCheckCountryCode) {
+        this.storeCheckCountryCode = storeCheckCountryCode == null ? null : storeCheckCountryCode.trim();
+    }
+
+    public String getStoreCheckCountryName() {
+        return storeCheckCountryName;
+    }
+
+    public void setStoreCheckCountryName(String storeCheckCountryName) {
+        this.storeCheckCountryName = storeCheckCountryName == null ? null : storeCheckCountryName.trim();
     }
 }

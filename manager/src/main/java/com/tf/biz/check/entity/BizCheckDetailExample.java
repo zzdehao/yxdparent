@@ -4335,133 +4335,73 @@ public class BizCheckDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkIsNull() {
-            addCriterion("tingdian_name_ok is null");
+        public Criteria andStoreRealnameIsNull() {
+            addCriterion("store_realname is null");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkIsNotNull() {
-            addCriterion("tingdian_name_ok is not null");
+        public Criteria andStoreRealnameIsNotNull() {
+            addCriterion("store_realname is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkEqualTo(Integer value) {
-            addCriterion("tingdian_name_ok =", value, "tingdianNameOk");
+        public Criteria andStoreRealnameEqualTo(String value) {
+            addCriterion("store_realname =", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkNotEqualTo(Integer value) {
-            addCriterion("tingdian_name_ok <>", value, "tingdianNameOk");
+        public Criteria andStoreRealnameNotEqualTo(String value) {
+            addCriterion("store_realname <>", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkGreaterThan(Integer value) {
-            addCriterion("tingdian_name_ok >", value, "tingdianNameOk");
+        public Criteria andStoreRealnameGreaterThan(String value) {
+            addCriterion("store_realname >", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkGreaterThanOrEqualTo(Integer value) {
-            addCriterion("tingdian_name_ok >=", value, "tingdianNameOk");
+        public Criteria andStoreRealnameGreaterThanOrEqualTo(String value) {
+            addCriterion("store_realname >=", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkLessThan(Integer value) {
-            addCriterion("tingdian_name_ok <", value, "tingdianNameOk");
+        public Criteria andStoreRealnameLessThan(String value) {
+            addCriterion("store_realname <", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkLessThanOrEqualTo(Integer value) {
-            addCriterion("tingdian_name_ok <=", value, "tingdianNameOk");
+        public Criteria andStoreRealnameLessThanOrEqualTo(String value) {
+            addCriterion("store_realname <=", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkIn(List<Integer> values) {
-            addCriterion("tingdian_name_ok in", values, "tingdianNameOk");
+        public Criteria andStoreRealnameLike(String value) {
+            addCriterion("store_realname like", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkNotIn(List<Integer> values) {
-            addCriterion("tingdian_name_ok not in", values, "tingdianNameOk");
+        public Criteria andStoreRealnameNotLike(String value) {
+            addCriterion("store_realname not like", value, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkBetween(Integer value1, Integer value2) {
-            addCriterion("tingdian_name_ok between", value1, value2, "tingdianNameOk");
+        public Criteria andStoreRealnameIn(List<String> values) {
+            addCriterion("store_realname in", values, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameOkNotBetween(Integer value1, Integer value2) {
-            addCriterion("tingdian_name_ok not between", value1, value2, "tingdianNameOk");
+        public Criteria andStoreRealnameNotIn(List<String> values) {
+            addCriterion("store_realname not in", values, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameIsNull() {
-            addCriterion("tingdian_name is null");
+        public Criteria andStoreRealnameBetween(String value1, String value2) {
+            addCriterion("store_realname between", value1, value2, "storeRealname");
             return (Criteria) this;
         }
 
-        public Criteria andTingdianNameIsNotNull() {
-            addCriterion("tingdian_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameEqualTo(String value) {
-            addCriterion("tingdian_name =", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameNotEqualTo(String value) {
-            addCriterion("tingdian_name <>", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameGreaterThan(String value) {
-            addCriterion("tingdian_name >", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameGreaterThanOrEqualTo(String value) {
-            addCriterion("tingdian_name >=", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameLessThan(String value) {
-            addCriterion("tingdian_name <", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameLessThanOrEqualTo(String value) {
-            addCriterion("tingdian_name <=", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameLike(String value) {
-            addCriterion("tingdian_name like", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameNotLike(String value) {
-            addCriterion("tingdian_name not like", value, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameIn(List<String> values) {
-            addCriterion("tingdian_name in", values, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameNotIn(List<String> values) {
-            addCriterion("tingdian_name not in", values, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameBetween(String value1, String value2) {
-            addCriterion("tingdian_name between", value1, value2, "tingdianName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTingdianNameNotBetween(String value1, String value2) {
-            addCriterion("tingdian_name not between", value1, value2, "tingdianName");
+        public Criteria andStoreRealnameNotBetween(String value1, String value2) {
+            addCriterion("store_realname not between", value1, value2, "storeRealname");
             return (Criteria) this;
         }
 
@@ -4652,6 +4592,146 @@ public class BizCheckDetailExample {
 
         public Criteria andExistTerminalOkNotBetween(Integer value1, Integer value2) {
             addCriterion("exist_terminal_ok not between", value1, value2, "existTerminalOk");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeIsNull() {
+            addCriterion("store_check_country_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeIsNotNull() {
+            addCriterion("store_check_country_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeEqualTo(String value) {
+            addCriterion("store_check_country_code =", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeNotEqualTo(String value) {
+            addCriterion("store_check_country_code <>", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeGreaterThan(String value) {
+            addCriterion("store_check_country_code >", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("store_check_country_code >=", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeLessThan(String value) {
+            addCriterion("store_check_country_code <", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeLessThanOrEqualTo(String value) {
+            addCriterion("store_check_country_code <=", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeLike(String value) {
+            addCriterion("store_check_country_code like", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeNotLike(String value) {
+            addCriterion("store_check_country_code not like", value, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeIn(List<String> values) {
+            addCriterion("store_check_country_code in", values, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeNotIn(List<String> values) {
+            addCriterion("store_check_country_code not in", values, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeBetween(String value1, String value2) {
+            addCriterion("store_check_country_code between", value1, value2, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryCodeNotBetween(String value1, String value2) {
+            addCriterion("store_check_country_code not between", value1, value2, "storeCheckCountryCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameIsNull() {
+            addCriterion("store_check_country_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameIsNotNull() {
+            addCriterion("store_check_country_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameEqualTo(String value) {
+            addCriterion("store_check_country_name =", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameNotEqualTo(String value) {
+            addCriterion("store_check_country_name <>", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameGreaterThan(String value) {
+            addCriterion("store_check_country_name >", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameGreaterThanOrEqualTo(String value) {
+            addCriterion("store_check_country_name >=", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameLessThan(String value) {
+            addCriterion("store_check_country_name <", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameLessThanOrEqualTo(String value) {
+            addCriterion("store_check_country_name <=", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameLike(String value) {
+            addCriterion("store_check_country_name like", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameNotLike(String value) {
+            addCriterion("store_check_country_name not like", value, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameIn(List<String> values) {
+            addCriterion("store_check_country_name in", values, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameNotIn(List<String> values) {
+            addCriterion("store_check_country_name not in", values, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameBetween(String value1, String value2) {
+            addCriterion("store_check_country_name between", value1, value2, "storeCheckCountryName");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckCountryNameNotBetween(String value1, String value2) {
+            addCriterion("store_check_country_name not between", value1, value2, "storeCheckCountryName");
             return (Criteria) this;
         }
     }
