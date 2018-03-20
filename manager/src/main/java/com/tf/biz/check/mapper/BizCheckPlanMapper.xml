@@ -35,6 +35,7 @@
     <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
     <result column="batch_name" jdbcType="VARCHAR" property="batchName" />
     <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -99,7 +100,7 @@
     check_start_date, check_end_date, check_status, is_deleted, delete_user_id, delete_user_name, 
     delete_time, channel_code, channel_name, channel_type, plan_code, province_code, 
     province_name, city_code, city_name, store_address, store_type_name, remkark, blz1, 
-    blz2, blz3, create_time, create_user_id, batch_name, create_user_name
+    blz2, blz3, create_time, create_user_id, batch_name, create_user_name, last_check_time
   </sql>
   <select id="selectByExample" parameterType="com.tf.biz.check.entity.BizCheckPlanExample" resultMap="BaseResultMap">
     select
@@ -150,7 +151,8 @@
       city_name, store_address, store_type_name, 
       remkark, blz1, blz2, 
       blz3, create_time, create_user_id, 
-      batch_name, create_user_name)
+      batch_name, create_user_name, last_check_time
+      )
     values (#{batchId,jdbcType=BIGINT}, #{storeCode,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, 
       #{storeId,jdbcType=INTEGER}, #{checkUserid,jdbcType=INTEGER}, #{checkUserName,jdbcType=VARCHAR}, 
       #{channelUserTel,jdbcType=VARCHAR}, #{checkStartDate,jdbcType=TIMESTAMP}, #{checkEndDate,jdbcType=TIMESTAMP}, 
@@ -161,7 +163,8 @@
       #{cityName,jdbcType=VARCHAR}, #{storeAddress,jdbcType=VARCHAR}, #{storeTypeName,jdbcType=VARCHAR}, 
       #{remkark,jdbcType=VARCHAR}, #{blz1,jdbcType=VARCHAR}, #{blz2,jdbcType=VARCHAR}, 
       #{blz3,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}, 
-      #{batchName,jdbcType=VARCHAR}, #{createUserName,jdbcType=VARCHAR})
+      #{batchName,jdbcType=VARCHAR}, #{createUserName,jdbcType=VARCHAR}, #{lastCheckTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tf.biz.check.entity.BizCheckPlan" useGeneratedKeys="true">
     insert into biz_check_plan
@@ -262,6 +265,9 @@
       <if test="createUserName != null">
         create_user_name,
       </if>
+      <if test="lastCheckTime != null">
+        last_check_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="batchId != null">
@@ -359,6 +365,9 @@
       </if>
       <if test="createUserName != null">
         #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckTime != null">
+        #{lastCheckTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -470,6 +479,9 @@
       <if test="record.createUserName != null">
         create_user_name = #{record.createUserName,jdbcType=VARCHAR},
       </if>
+      <if test="record.lastCheckTime != null">
+        last_check_time = #{record.lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -509,7 +521,8 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_user_id = #{record.createUserId,jdbcType=INTEGER},
       batch_name = #{record.batchName,jdbcType=VARCHAR},
-      create_user_name = #{record.createUserName,jdbcType=VARCHAR}
+      create_user_name = #{record.createUserName,jdbcType=VARCHAR},
+      last_check_time = #{record.lastCheckTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -613,6 +626,9 @@
       <if test="createUserName != null">
         create_user_name = #{createUserName,jdbcType=VARCHAR},
       </if>
+      <if test="lastCheckTime != null">
+        last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -649,7 +665,8 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user_id = #{createUserId,jdbcType=INTEGER},
       batch_name = #{batchName,jdbcType=VARCHAR},
-      create_user_name = #{createUserName,jdbcType=VARCHAR}
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

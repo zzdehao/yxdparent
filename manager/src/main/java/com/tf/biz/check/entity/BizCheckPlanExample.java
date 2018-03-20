@@ -2304,6 +2304,66 @@ public class BizCheckPlanExample {
             addCriterion("create_user_name not between", value1, value2, "createUserName");
             return (Criteria) this;
         }
+
+        public Criteria andLastCheckTimeIsNull() {
+            addCriterion("last_check_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeIsNotNull() {
+            addCriterion("last_check_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeEqualTo(Date value) {
+            addCriterion("last_check_time =", value, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeNotEqualTo(Date value) {
+            addCriterion("last_check_time <>", value, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeGreaterThan(Date value) {
+            addCriterion("last_check_time >", value, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("last_check_time >=", value, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeLessThan(Date value) {
+            addCriterion("last_check_time <", value, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeLessThanOrEqualTo(Date value) {
+            addCriterion("last_check_time <=", value, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeIn(List<Date> values) {
+            addCriterion("last_check_time in", values, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeNotIn(List<Date> values) {
+            addCriterion("last_check_time not in", values, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeBetween(Date value1, Date value2) {
+            addCriterion("last_check_time between", value1, value2, "lastCheckTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastCheckTimeNotBetween(Date value1, Date value2) {
+            addCriterion("last_check_time not between", value1, value2, "lastCheckTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

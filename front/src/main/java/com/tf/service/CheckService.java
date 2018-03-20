@@ -75,6 +75,7 @@ public class CheckService {
         BizCheckPlan checkPlan = new BizCheckPlan();
         checkPlan.setId(checkDetail.getPlanId());
         checkPlan.setCheckStatus(2);
+        checkPlan.setLastCheckTime(checkDetail.getCheckTime());
         this.bizCheckPlanMapper.updateByPrimaryKey(checkPlan);
     }
 

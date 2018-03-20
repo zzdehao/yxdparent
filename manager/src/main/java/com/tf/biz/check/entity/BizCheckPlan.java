@@ -69,6 +69,8 @@ public class BizCheckPlan {
 
     private String createUserName;
 
+    private Date lastCheckTime;
+
     public Long getId() {
         return id;
     }
@@ -331,5 +333,13 @@ public class BizCheckPlan {
 
     public void setCreateUserName(String createUserName) {
         this.createUserName = createUserName == null ? null : createUserName.trim();
+    }
+
+    public Date getLastCheckTime() {
+        return lastCheckTime;
+    }
+
+    public void setLastCheckTime(Date lastCheckTime) {
+        this.lastCheckTime = lastCheckTime;
     }
 }
