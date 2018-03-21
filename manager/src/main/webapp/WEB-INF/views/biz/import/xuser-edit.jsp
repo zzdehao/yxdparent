@@ -59,13 +59,6 @@
 			</div>
 			<div class="col-4"> </div>
 		</div>
-		<div class="row cl prow">
-			<label class="form-label col-3"><span class="c-red">*</span>初始密码：</label>
-			<div class="formControls col-5">
-				<input type="password" name="password" id ="password" placeholder="密码" autocomplete="off" value="" class="input-text" datatype="*6-20" nullmsg="密码不能为空">
-			</div>
-			<div class="col-4"> </div>
-		</div>
 		<div class="row cl">
 			<label class="form-label col-3"><span class="c-red">*</span>手机：</label>
 			<div class="formControls col-5">
@@ -221,7 +214,7 @@
 			callback:function(form){
 				var index = parent.layer.load();
 				$.ajax({
-					url:"yewu/user/save" ,
+					url:"import/xuserSave" ,
 					type:'post',
 					async:true ,
 					cache:false ,
