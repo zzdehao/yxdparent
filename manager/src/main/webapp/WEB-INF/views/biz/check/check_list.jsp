@@ -91,7 +91,7 @@
         <table class="table table-border table-bordered table-bg" width="100%">
             <thead>
             <tr>
-                <th scope="col" colspan="57">巡店记录查询</th>
+                <th scope="col" colspan="61">巡店记录查询</th>
             </tr>
             <tr id="queryTitle" class="text-c">
                 <th width="120" nowrap>计划批次</th>
@@ -110,8 +110,10 @@
                 <th width="120" nowrap>纬度</th>
                 <th width="120" nowrap keyName="storeExistsok" queryMap="okMap">店铺是否存在</th>
                 <th width="120" nowrap keyName="storeRealnameok" queryMap="okMap">店铺实际名称是否相符</th>
+                <th width="120" nowrap>实际厅店名称</th>
                 <th width="120" nowrap>店铺实际巡查地址省</th>
                 <th width="120" nowrap>店铺实际巡查地址城市</th>
+                <th width="120" nowrap>店铺实际巡查地址乡</th>
                 <th width="120" nowrap>店铺实际巡查地址</th>
                 <th width="120" nowrap keyName="storeRegiontype" queryMap="regionMap">店铺地域类型</th>
                 <th width="120" nowrap keyName="storeMendiantype" queryMap="mendianMap">店铺门店类型</th>
@@ -148,6 +150,8 @@
                 <th width="120" nowrap keyName="storeZqAppleok" queryMap="okMap">是否苹果专柜</th>
                 <th width="120" nowrap keyName="storeZqMeizuok" queryMap="okMap">是否魅族</th>
                 <th width="120" nowrap keyName="storeZq2g3gok" queryMap="okMap">是否2g,3g专柜</th>
+                <th width="120" nowrap>其他专区</th>
+                <th width="120" nowrap>业务台席数量</th>
                 <th width="120" nowrap>社会机型库存数量</th>
                 <th width="120" nowrap>自由机型库存数量</th>
                 <th width="146" nowrap>操作</th>
@@ -166,6 +170,10 @@
 <div id="temp" style="display: none">
     <table>
         <tr class="text-c">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -308,10 +316,12 @@
             $(tdList[k++]).html(obj.bizCheckDetail.checkTime);
             $(tdList[k++]).html(obj.bizCheckDetail.checkLongitude);
             $(tdList[k++]).html(obj.bizCheckDetail.checkLatitude);
-            $(tdList[k++]).html(obj.bizCheckDetail.storeExistsok);
-            $(tdList[k++]).html(obj.bizCheckDetail.storeRealnameok);
+            $(tdList[k++]).html(checkOkMap(obj.bizCheckDetail.storeExistsok));
+            $(tdList[k++]).html(checkOkMap(obj.bizCheckDetail.storeRealnameok));
+            $(tdList[k++]).html(obj.bizCheckDetail.storeRealname);
             $(tdList[k++]).html(obj.bizCheckDetail.storeCheckProvinceName);
             $(tdList[k++]).html(obj.bizCheckDetail.storeCheckCityName);
+            $(tdList[k++]).html(obj.bizCheckDetail.storeCheckCountryName);
             $(tdList[k++]).html(obj.bizCheckDetail.storeAddress);
             $(tdList[k++]).html(checkRegionMap(obj.bizCheckDetail.storeRegiontype));
             $(tdList[k++]).html(checkMendianMap(obj.bizCheckDetail.storeMendiantype));
@@ -348,6 +358,8 @@
             $(tdList[k++]).html(checkOkMap(obj.bizCheckDetail.storeZqAppleok));
             $(tdList[k++]).html(checkOkMap(obj.bizCheckDetail.storeZqMeizuok));
             $(tdList[k++]).html(checkOkMap(obj.bizCheckDetail.storeZq2g3gok));
+            $(tdList[k++]).html(obj.bizCheckDetail.otherArea);
+            $(tdList[k++]).html(obj.bizCheckDetail.bizCount);
             $(tdList[k++]).html(obj.bizCheckDetail.storeKccheckOutcount);
             $(tdList[k++]).html(obj.bizCheckDetail.storeKccheckSelfcount);
             $(tdList[k++]).find("[name='goDetail']").click(function(){
