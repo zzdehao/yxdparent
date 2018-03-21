@@ -250,6 +250,22 @@ public class DataImpService extends BaseService {
         return true;
     }
 
+    public void saveXuser(Admin admin){
+        admin.setRoleCode(initRoleCode);
+        admin.setPassword(MD5.getMD5(initPassword));
+        Role role = roleMapper.getByRoleCode(initRoleCode);
+        if(admin.getId()==null) {
+            this.adminMapper.insert(admin);
+            UserRole urole = new UserRole();
+            urole.setRoleId(role.getId());
+            urole.setUserId(admin.getId());
+            //生成角色人员信息
+            this.roleMapper.userRoleInsert(urole);
+        }else{
+            this.adminMapper.update(admin);
+        }
+    }
+
     /**
      * 重复人员更新临表其他字段qita
      *
@@ -487,6 +503,7 @@ public class DataImpService extends BaseService {
         try {
             this.importUserMapper.deleteByPrimaryKey(Long.parseLong(id.toString()));
             this.adminMapper.delete(id);
+            this.roleMapper.userRoleDeleteForUser(id);
         } catch (Exception ex) {
             ex.printStackTrace();
             return -1;

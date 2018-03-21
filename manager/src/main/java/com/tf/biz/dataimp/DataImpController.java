@@ -6,6 +6,7 @@ import com.tf.biz.imp.entity.BizImportBatch;
 import com.tf.biz.imp.pojo.FilePath;
 import com.tf.biz.store.StoreService;
 import com.tf.biz.store.entity.BizStore;
+import com.tf.common.utils.MD5;
 import com.tf.tadmin.controller.BaseController;
 import com.tf.tadmin.entity.Admin;
 import com.tf.tadmin.entity.Message;
@@ -594,6 +595,18 @@ public class DataImpController extends BaseController {
             return new Message(false) ;
         }
         return new Message(state) ;
+    }
+
+    @RequestMapping(value = "/xuserSave")
+    public @ResponseBody
+    Message xuserSave(Admin admin) {
+        try {
+            this.impService.saveXuser(admin);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Message(0) ;
+        }
+        return new Message(1) ;
     }
     /**
      * 下载文件
