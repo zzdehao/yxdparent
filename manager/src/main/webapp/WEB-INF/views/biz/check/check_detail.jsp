@@ -22,7 +22,7 @@
     <script type="text/javascript" src="lib/respond.min.js"></script>
     <script type="text/javascript" src="lib/PIE_IE678.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="script/biz/checkCode.js"></script>
+    <script type="text/javascript" src="script/biz/checkCode.js?v=1"></script>
     <link href="css/H-ui.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/H-ui.admin.css" rel="stylesheet" type="text/css"/>
     <link href="lib/icheck/icheck.css" rel="stylesheet" type="text/css"/>

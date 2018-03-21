@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>巡店记录查询</title>
     <%@include file="/header.jsp" %>
-    <script type="text/javascript" src="script/biz/checkCode.js"></script>
+    <script type="text/javascript" src="script/biz/checkCode.js?v=1"></script>
     <STYLE type="text/css">
         .queryItemBox{
             display: inline-block;

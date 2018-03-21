@@ -114,10 +114,12 @@ var keyAndValueList = [
     {title: "检查时间", key: "bizCheckDetail.checkTime", map: ""},
     {title: "经度", key: "bizCheckDetail.checkLongitude", map: ""},
     {title: "纬度", key: "bizCheckDetail.checkLatitude", map: ""},
-    {title: "店铺是否存在", key: "bizCheckDetail.storeExistsok", map: ""},
-    {title: "店铺实际名称是否相符", key: "bizCheckDetail.storeRealnameok", map: ""},
+    {title: "店铺是否存在", key: "bizCheckDetail.storeExistsok", map: "checkOkMap"},
+    {title: "店铺实际名称是否相符", key: "bizCheckDetail.storeRealnameok", map: "checkOkMap"},
+    {title: "实际厅店名称", key: "bizCheckDetail.storeRealname", map: ""},
     {title: "店铺实际巡查地址省", key: "bizCheckDetail.storeCheckProvinceName", map: ""},
     {title: "店铺实际巡查地址城市", key: "bizCheckDetail.storeCheckCityName", map: ""},
+    {title: "店铺实际巡查地址乡", key: "bizCheckDetail.storeCheckCountryName", map: ""},
     {title: "店铺实际巡查地址", key: "bizCheckDetail.storeAddress", map: ""},
     {title: "店铺地域类型", key: "bizCheckDetail.storeRegiontype", map: "checkRegionMap"},
     {title: "店铺门店类型", key: "bizCheckDetail.storeMendiantype", map: "checkMendianMap"},
@@ -154,6 +156,8 @@ var keyAndValueList = [
     {title: "是否苹果专柜", key: "bizCheckDetail.storeZqAppleok", map: "checkLiangMap"},
     {title: "是否魅族", key: "bizCheckDetail.storeZqMeizuok", map: "checkLiangMap"},
     {title: "是否2g,3g专柜", key: "bizCheckDetail.storeZq2g3gok", map: "checkLiangMap"},
+    {title: "其他专区", key: "bizCheckDetail.otherArea", map: ""},
+    {title: "业务台席数量", key: "bizCheckDetail.bizCount", map: ""},
     {title: "社会机型库存数量", key: "bizCheckDetail.storeKccheckOutcount", map: ""},
     {title: "自由机型库存数量", key: "bizCheckDetail.storeKccheckSelfcount", map: ""}
 ]

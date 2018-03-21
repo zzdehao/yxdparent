@@ -365,9 +365,13 @@ public class CheckService {
         cell = headRow.createCell(n++);
         cell.setCellValue("店铺实际名称是否相符");
         cell = headRow.createCell(n++);
+        cell.setCellValue("实际厅店名称");
+        cell = headRow.createCell(n++);
         cell.setCellValue("店铺实际巡查地址省");
         cell = headRow.createCell(n++);
         cell.setCellValue("店铺实际巡查地址城市");
+        cell = headRow.createCell(n++);
+        cell.setCellValue("店铺实际巡查地址乡");
         cell = headRow.createCell(n++);
         cell.setCellValue("店铺实际巡查地址");
         cell = headRow.createCell(n++);
@@ -441,6 +445,10 @@ public class CheckService {
         cell = headRow.createCell(n++);
         cell.setCellValue("是否2g,3g专柜");
         cell = headRow.createCell(n++);
+        cell.setCellValue("其他专区");
+        cell = headRow.createCell(n++);
+        cell.setCellValue("业务台席数量");
+        cell = headRow.createCell(n++);
         cell.setCellValue("社会机型库存数量");
         cell = headRow.createCell(n++);
         cell.setCellValue("自由机型库存数量");
@@ -497,8 +505,10 @@ public class CheckService {
 
             String storeExistsok = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getStoreExistsok());
             String storeRealnameok = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getStoreRealnameok());
+            String storeRealname = checkDetailResponse.getBizCheckDetail().getStoreRealname();
             String storeCheckProvinceName = checkDetailResponse.getBizCheckDetail().getStoreCheckProvinceName();
             String storeCheckCityName = checkDetailResponse.getBizCheckDetail().getStoreCheckCityName();
+            String storeCheckCountryName = checkDetailResponse.getBizCheckDetail().getStoreCheckCountryName();
             String storeAddress = checkDetailResponse.getBizCheckDetail().getStoreAddress();
             //区域
             String storeRegiontype = this.getMapValue(checkRegionMap, checkDetailResponse.getBizCheckDetail().getStoreRegiontype());
@@ -545,6 +555,8 @@ public class CheckService {
             String storeZqAppleok = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getStoreZqAppleok());
             String storeZqMeizuok = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getStoreZqMeizuok());
             String storeZq2g3gok = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getStoreZq2g3gok());
+            String otherArea = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getOtherArea());
+            String bizCount = this.checkOkMap.get(checkDetailResponse.getBizCheckDetail().getBizCount());
             int storeKccheckOutcount = checkDetailResponse.getBizCheckDetail().getStoreKccheckOutcount();
             int storeKccheckSelfcount = checkDetailResponse.getBizCheckDetail().getStoreKccheckSelfcount();
 
@@ -553,9 +565,13 @@ public class CheckService {
             cell = headRow.createCell(k++);
             cell.setCellValue(storeRealnameok);
             cell = headRow.createCell(k++);
+            cell.setCellValue(storeRealname);
+            cell = headRow.createCell(k++);
             cell.setCellValue(storeCheckProvinceName);
             cell = headRow.createCell(k++);
             cell.setCellValue(storeCheckCityName);
+            cell = headRow.createCell(k++);
+            cell.setCellValue(storeCheckCountryName);
             cell = headRow.createCell(k++);
             cell.setCellValue(storeAddress);
             cell = headRow.createCell(k++);
@@ -628,6 +644,10 @@ public class CheckService {
             cell.setCellValue(storeZqMeizuok);
             cell = headRow.createCell(k++);
             cell.setCellValue(storeZq2g3gok);
+            cell = headRow.createCell(k++);
+            cell.setCellValue(otherArea);
+            cell = headRow.createCell(k++);
+            cell.setCellValue(bizCount);
             cell = headRow.createCell(k++);
             cell.setCellValue(storeKccheckOutcount);
             cell = headRow.createCell(k++);
