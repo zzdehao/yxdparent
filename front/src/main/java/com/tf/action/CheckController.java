@@ -86,6 +86,8 @@ public class CheckController extends BaseController{
             "<br/>\"storeCheckCityName\": \"string\", #检查城市名称\n" +
             "<br/>\"storeCheckProvinceCode\": \"string\", #检查省份编码\n" +
             "<br/>\"storeCheckProvinceName\": \"string\", #检查省份名称\n" +
+            "<br/>\"storeCheckCountryCode\": \"string\", #店铺实际巡查地址乡编码\n" +
+            "<br/>\"storeCheckCountryName\": \"string\", #店铺实际巡查地址乡名称\n" +
             "<br/>\"storeCheckaddress\": 0, #检查详细地址\n" +
             "<br/>\"storeId\": 0, #店铺ID\n" +
             "<br/>\"storeCode\": \"string\", #店铺编码\n" +
@@ -94,6 +96,8 @@ public class CheckController extends BaseController{
             "<br/>\"checkLatitude\": \"string\", #维度\n" +
             "<br/>\"storeExistsok\": 0, #店铺是否存在\n" +
             "<br/>\"storeRealnameok\": 0, #店铺实际名称是否相符\n" +
+            "<br/>\"storeRealname\": 0, #厅店名称\n" +
+            "<br/>\"bizCount\": 0, #业务台席数量\n" +
             "<br/>\"storeRegiontype\": 0, #店铺地域类型\n" +
             "<br/>\"storeMendiantype\": 0, #店铺门店类型\n" +
             "<br/>\"storeYtsqtype\": 0, #店铺类型业态商圈\n" +
@@ -106,6 +110,7 @@ public class CheckController extends BaseController{
             "<br/>\"storeMemberTaocanScope\": 0, #营业员对内部套餐策略数量程度\n" +
             "<br/>\"storeMemberTerminalPolicy\": 0, #终端营销策略-终端熟练\n" +
             "<br/>\"storeMemeberActivesellok\": 0, #对客户是否主动营销\n" +
+            "<br/>\"existTerminalOk\": 0, #店内是否有终端销售\n" +
             "<br/>\"store4gok\": 0, #是否推出4g\n" +
             "<br/>\"storeAllnetok\": 0, #是否推出全网通\n" +
             "<br/>\"storeFirstRecdTerminal\": 0, #是否主推机型\n" +
@@ -128,6 +133,7 @@ public class CheckController extends BaseController{
             "<br/>\"storeZqSamsongok\": 0, #是否三星专柜\n" +
             "<br/>\"storeZqAppleok\": 0, #是否苹果专柜\n" +
             "<br/>\"storeZqMeizuok\": 0, #是否魅族\n" +
+            "<br/>\"otherArea\": 0, #其他专区\n" +
             "<br/>\"storeZq2g3gok\": 0, #是否2g,3g专柜\n" +
             "<br/>\"storeKccheckOutcount\": 0, #社会机型库存数量\n" +
             "<br/>\"storeKccheckSelfcount\": 0, #自由机型库存数量\n" +
