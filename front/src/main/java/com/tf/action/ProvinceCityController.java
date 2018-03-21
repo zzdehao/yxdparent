@@ -3,12 +3,15 @@ package com.tf.action;
 import com.fasterxml.jackson.databind.deser.Deserializers;
 import com.tf.entity.TAdmin;
 import com.tf.entity.TProvinceCity;
+import com.tf.param.District;
 import com.tf.service.ProvinceCityService;
 import com.tf.utils.Result;
 import com.tf.utils.ResultR;
 import com.tf.utils.StaticDataMap;
 import com.tf.web.config.ErrCode;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,19 +52,16 @@ public class ProvinceCityController extends BaseController {
         return resultR;
     }
 
-    @RequestMapping(value = "/district/tree", method = {RequestMethod.POST,RequestMethod.GET},
-            produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/district/tree", method = {RequestMethod.POST,RequestMethod.GET})
     @ApiOperation(notes = "获得所有地区信息", value = "获得所有地区信息", httpMethod = "GET")
-    public Result getAllDistrictTree() throws Exception {
-        List<TProvinceCity> provinceCities = StaticDataMap.staticProvinces;
-        List<TProvinceCity> mapData =new ArrayList<TProvinceCity>();
-        for(TProvinceCity province:provinceCities){
-            List<TProvinceCity> citys = this.provinceCityService.getAllCitysByPid(province.getId());
-            province.setChildList(citys);
-            mapData.add(province);
-        }
-        Result resultR = new Result(ErrCode.SUCCESS);
-        resultR.setData(mapData);
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "token",
+                    required = true, dataType = "String", paramType = "header"),
+    })
+    public ResultR getAllDistrictTree() throws Exception {
+        List<District> list = this.provinceCityService.getAllDistrictTree();
+        ResultR resultR = new ResultR();
+        resultR.setData(list);
         return resultR;
     }
 

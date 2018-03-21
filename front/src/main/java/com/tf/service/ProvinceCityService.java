@@ -3,13 +3,12 @@ import com.tf.entity.TProvinceCity;
 import com.tf.entity.TProvinceCityExample;
 import com.tf.mapper.TProvinceCityMapper;
 import com.tf.param.District;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 /**
  * Created by wugq on 2018/3/18.
@@ -60,24 +59,35 @@ public class ProvinceCityService {
         return this.provinceCityMapper.selectByPrimaryKey(id);
     }
 
+    @Transactional(readOnly = true)
     public List<District> getAllDistrictTree(){
         TProvinceCityExample example = new TProvinceCityExample();
         example.setOrderByClause("code");
         List<TProvinceCity> list = this.provinceCityMapper.selectByExample(example);
         List<District> treeList = new ArrayList();
-        list.forEach(d -> {
+        LinkedList<District> link = new LinkedList();
+        for(int i = 0, size = list.size(); i < size; i++){
+            TProvinceCity provinceCity = list.get(i);
+            District district = new District();
+            BeanUtils.copyProperties(provinceCity, district);
+            District last;
+            try {
+                last = link.getFirst();
+            }catch(Exception ex){
+                link.push(district);
+                treeList.add(district);
+                continue;
+            }
+            if(last.getId().intValue() == district.getParentId().intValue()){
+                link.push(district);
+                last.add(district);
+            }else{
+                link.pop();
+                i--;
+            }
 
-        });
+        }
         return treeList;
     }
-
-
-
-
-
-
-
-
-
 
 }
