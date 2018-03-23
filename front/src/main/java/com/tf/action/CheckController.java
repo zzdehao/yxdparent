@@ -46,7 +46,7 @@ public class CheckController extends BaseController{
     })
     @RequestMapping(value = "/check/plan/list/{status}", method = {RequestMethod.GET})
     public ResultR getPlanList(@PathVariable Integer status,
-                               @RequestHeader Integer limit, @RequestHeader Integer offset) {
+                               @RequestParam Integer limit, @RequestParam Integer offset) {
         ResultR r = new ResultR();
         BizCheckPlanExample example = new BizCheckPlanExample();
 
