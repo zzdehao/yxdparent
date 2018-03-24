@@ -111,7 +111,7 @@ public class BizStoreExample {
             criteria.add(new Criterion(condition));
         }
 
-        public void addCriterion(String condition, Object value, String property) {
+        protected void addCriterion(String condition, Object value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
@@ -2164,6 +2164,76 @@ public class BizStoreExample {
             addCriterion("store_code not between", value1, value2, "storeCode");
             return (Criteria) this;
         }
+
+        public Criteria andViewNameIsNull() {
+            addCriterion("view_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameIsNotNull() {
+            addCriterion("view_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameEqualTo(String value) {
+            addCriterion("view_name =", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameNotEqualTo(String value) {
+            addCriterion("view_name <>", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameGreaterThan(String value) {
+            addCriterion("view_name >", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameGreaterThanOrEqualTo(String value) {
+            addCriterion("view_name >=", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameLessThan(String value) {
+            addCriterion("view_name <", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameLessThanOrEqualTo(String value) {
+            addCriterion("view_name <=", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameLike(String value) {
+            addCriterion("view_name like", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameNotLike(String value) {
+            addCriterion("view_name not like", value, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameIn(List<String> values) {
+            addCriterion("view_name in", values, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameNotIn(List<String> values) {
+            addCriterion("view_name not in", values, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameBetween(String value1, String value2) {
+            addCriterion("view_name between", value1, value2, "viewName");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewNameNotBetween(String value1, String value2) {
+            addCriterion("view_name not between", value1, value2, "viewName");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
@@ -2229,7 +2299,7 @@ public class BizStoreExample {
             this.noValue = true;
         }
 
-        public Criterion(String condition, Object value, String typeHandler) {
+        protected Criterion(String condition, Object value, String typeHandler) {
             super();
             this.condition = condition;
             this.value = value;
