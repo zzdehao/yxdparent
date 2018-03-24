@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by wugq on 2018/3/18.
@@ -55,7 +54,7 @@ public class CheckService {
     }
 
     @Transactional(readOnly = true)
-    public Pager<BizCheckPlan> findPlanList(BizCheckPlanExample planExample){
+    public Pager<BizCheckDetailResponse> findPlanList(BizCheckPlanExample planExample){
         Pager pager = new Pager();
         Long count = this.bizCheckPlanMapper.countByExample(planExample);
         if (count.longValue() == 0) {
@@ -66,7 +65,27 @@ public class CheckService {
         if (CollectionUtils.isEmpty(planList)) {
             return pager;
         }
-        pager.setRows(planList);
+        List<Long> ids = new ArrayList();
+        for(int i = 0; i < planList.size(); i++){
+            ids.add(planList.get(i).getStoreId().longValue());
+        }
+        BizStoreExample example = new BizStoreExample();
+        example.createCriteria().andIdIn(ids);
+        List<BizStore> storeList = this.storeService.getStoreExample(example);
+        Map<Long, BizStore> storeMap = new HashMap();
+        for(int i = 0; i < storeList.size(); i++){
+            BizStore store = storeList.get(i);
+            storeMap.put(store.getId(), store);
+        }
+        List<BizCheckDetailResponse> checkDetailResponseList = new ArrayList();
+        for(int i = 0; i < planList.size(); i++){
+            BizCheckDetailResponse checkDetailResponse = new BizCheckDetailResponse();
+            checkDetailResponseList.add(checkDetailResponse);
+            BizCheckPlan checkPlan = planList.get(i);
+            checkDetailResponse.setBizCheckPlan(checkPlan);
+            checkDetailResponse.setBizStore(storeMap.get(checkPlan.getStoreId().longValue()));
+        }
+        pager.setRows(checkDetailResponseList);
         return pager;
     }
 
