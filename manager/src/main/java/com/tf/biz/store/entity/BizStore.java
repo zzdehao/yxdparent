@@ -65,6 +65,8 @@ public class BizStore {
 
     private String storeCode;
 
+    private String viewName;
+
     public Long getId() {
         return id;
     }
@@ -311,5 +313,13 @@ public class BizStore {
 
     public void setStoreCode(String storeCode) {
         this.storeCode = storeCode == null ? null : storeCode.trim();
+    }
+
+    public String getViewName() {
+        return viewName;
+    }
+
+    public void setViewName(String viewName) {
+        this.viewName = viewName == null ? null : viewName.trim();
     }
 }

@@ -132,8 +132,7 @@ public class StoreService {
                  是否是有效渠道
                  人员匹配（渠道经理）
                  渠道经理电话
-                 巡店人
-                 巡店人电话
+                 店铺用户名
                  */
                 String ccode = ExcelUtil.getFromCell(row.getCell(i++));
                 if(!StringUtils.isEmpty(ccode)) {
@@ -175,6 +174,8 @@ public class StoreService {
                     bizStore.setChannelManagerId(0); //渠道经理ID
                     bizStore.setChannelManagerName(ExcelUtil.getFromCell(row.getCell(i++))); //渠道经理姓名
                     bizStore.setChannelManagerPhone(ExcelUtil.getFromCell(row.getCell(i++))); //渠道经理电话
+
+                    bizStore.setViewName(ExcelUtil.getFromCell(row.getCell(i++))); //店铺用户名
                     //todo 巡店人姓名和巡店人电话
                     bizStore.setLongitude("0"); //经度
                     bizStore.setLatitude("0"); //纬度
@@ -246,6 +247,7 @@ public class StoreService {
                     bizStore.setChannelManagerId(0); //渠道经理ID
                     bizStore.setChannelManagerName(ExcelUtil.getFromCell(row.getCell(i++))); //渠道经理姓名
                     bizStore.setChannelManagerPhone(ExcelUtil.getFromCell(row.getCell(i++))); //渠道经理电话
+                    bizStore.setViewName(ExcelUtil.getFromCell(row.getCell(i++))); //店铺用户名
                     //todo 巡店人姓名和巡店人电话
                     bizStore.setLongitude("0"); //经度
                     bizStore.setLatitude("0"); //纬度
@@ -314,6 +316,7 @@ public class StoreService {
                     bizStore.setChannelManagerId(0); //渠道经理ID
                     bizStore.setChannelManagerName(ExcelUtil.getFromCell(row.getCell(i++))); //渠道经理姓名
                     bizStore.setChannelManagerPhone(ExcelUtil.getFromCell(row.getCell(i++))); //渠道经理电话
+                    bizStore.setViewName(ExcelUtil.getFromCell(row.getCell(i++))); //店铺用户名
                     //todo 巡店人姓名和巡店人电话
                     bizStore.setLongitude("0"); //经度
                     bizStore.setLatitude("0"); //纬度

@@ -42,6 +42,7 @@
             <th width="80">渠道编码</th>
             <th width="80">渠道名称</th>
             <th width="100">店铺名称</th>
+            <th width="100">店铺用户名</th>
             <th width="80">渠道类型</th>
             <th width="80">区县分公司编码</th>
             <th width="80">区县分公司名称</th>
@@ -70,6 +71,7 @@
         <td>{{channelCode}}</td>
         <td>{{channelName}}</td>
         <td>{{storeName}}</td>
+        <td>{{viewName}}</td>
         <td>{{{statusTools channelType}}}</td>
         <td>{{companyCode}}</td>
         <td>{{companyName}}</td>
