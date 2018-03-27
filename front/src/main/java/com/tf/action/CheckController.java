@@ -77,7 +77,6 @@ public class CheckController extends BaseController{
     }
 
     @ApiOperation(notes = "入参描述:<br/>{\n" +
-            "<br/>\"checkTime\": \"2018-03-20T02:21:59.119Z\", #检查时间\n" +
             "<br/>\"planBatchId\": 0, #计划批次ID\n" +
             "<br/>\"planBatchName\": \"string\", #计划批次名称\n" +
             "<br/>\"planId\": 0, #计划ID\n" +
