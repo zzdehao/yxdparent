@@ -100,6 +100,11 @@
         where (name = #{login} and role_code='super') or  (tel = #{login} and role_code!='super')
 	</select>
 
+    <select id="queryByTel" parameterType="string" resultMap="adminMap">
+        select id ,<include refid="fields"/> from t_admin
+        where tel = #{tel} limit 1
+    </select>
+
     <select id="getByRoleCode" parameterType="Admin" resultMap="adminMap">
         select id ,<include refid="fields"/> from
         t_admin where

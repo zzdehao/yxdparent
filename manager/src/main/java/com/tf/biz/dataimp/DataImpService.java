@@ -23,6 +23,7 @@ import com.tf.common.utils.ObjectExcelRead;
 import com.tf.tadmin.entity.*;
 import com.tf.tadmin.mapper.AdminMapper;
 import com.tf.tadmin.mapper.RoleMapper;
+import com.tf.tadmin.service.AdminService;
 import com.tf.tadmin.service.BaseService;
 import com.tf.tadmin.shiro.ShiroUtils;
 import com.tf.tadmin.utils.Constants;
@@ -332,6 +333,7 @@ public class DataImpService extends BaseService {
                                            Map<String, Object> param,
                                            ImportEnum.ImportType importType)
             throws IOException, InvalidFormatException {
+        Map<String, String> provinceAndCityMap = StaticDataMap.provinceAndCityNameToCodeMapping;
         /**
          * SELF_CHANNEL_PLAN(31, "自有渠道","巡检计划"),
          WORLD_CHANNEL_PLAN(32, "社会渠道","巡检计划"),
@@ -376,33 +378,43 @@ public class DataImpService extends BaseService {
                     continue;
                 }
                 /**
-                 省
-                 市
-                 渠道编码
-                 渠道名称
-                 渠道类型
-                 店铺编码
-                 店铺名称
-                 店铺详细地址
-                 备注
-                 巡店人
-                 巡店人电话
+                 *增加省市编码todo
+                 省 0
+                 市 1
+                 渠道编码 2
+                 渠道名称 3
+                 渠道类型 4
+                 店铺编码 5
+                 店铺名称 6
+                 店铺详细地址 7
+                 备注 8
+                 巡店人 9
+                 巡店人电话 10
                  */
-                plan.setProvinceCode(null);
+                String proviceName = (String) data.get("var0");
+                String cityName = (String) data.get("var1");
+                plan.setProvinceCode(provinceAndCityMap.get(proviceName));
                 plan.setProvinceName((String) data.get("var0"));
-                plan.setCityCode(null);
+                plan.setCityCode(provinceAndCityMap.get(cityName));
                 plan.setCityName((String) data.get("var1"));
                 plan.setChannelType(importType.getCode());
                 plan.setChannelCode((String) data.get("var2"));
                 plan.setChannelName((String) data.get("var3"));
                 //店铺编码
-                String storeCode = (String) data.get("var4");
-                plan.setStoreCode((String) data.get("var4"));
-                plan.setStoreName((String) data.get("var5"));
-                plan.setStoreAddress((String) data.get("var6"));
+                String storeCode = (String) data.get("var5");
+                String tel = (String) data.get("var10");
+                plan.setStoreCode(storeCode);
+                plan.setStoreName((String) data.get("var6"));
+                plan.setStoreAddress((String) data.get("var7"));
                 plan.setStoreTypeName(importType.getTypeName());
                 plan.setCheckUserName((String) data.get("var9"));
-                plan.setChannelUserTel((String) data.get("var10"));
+                //巡检人电话
+                plan.setChannelUserTel(tel);
+                //设置巡检人id
+                Admin xadmin =adminMapper.queryByTel(tel);
+                if(xadmin!=null){
+                    plan.setCheckUserid(xadmin.getId());
+                }
                 //店铺存在
                 BizStore store = storeService.getStoreByStoreCode(storeCode);
                 if(store!=null) {
@@ -417,6 +429,7 @@ public class DataImpService extends BaseService {
             final int userId = sessionUser.getId();
             final String name = sessionUser.getName();
             planData.forEach(s -> {
+                s.setCheckStatus(0);
                 s.setBatchId(batchId);
                 s.setCreateTime(now);
                 s.setCreateUserId(userId);
