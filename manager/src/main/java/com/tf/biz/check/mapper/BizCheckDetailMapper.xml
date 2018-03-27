@@ -24,7 +24,7 @@
     <result column="store_check_city_name" jdbcType="VARCHAR" property="storeCheckCityName" />
     <result column="store_check_province_code" jdbcType="VARCHAR" property="storeCheckProvinceCode" />
     <result column="store_check_province_name" jdbcType="VARCHAR" property="storeCheckProvinceName" />
-    <result column="store_checkaddress" jdbcType="INTEGER" property="storeCheckaddress" />
+    <result column="store_checkaddress" jdbcType="VARCHAR" property="storeCheckaddress" />
     <result column="store_regiontype" jdbcType="INTEGER" property="storeRegiontype" />
     <result column="store_mendiantype" jdbcType="INTEGER" property="storeMendiantype" />
     <result column="store_ytsqtype" jdbcType="INTEGER" property="storeYtsqtype" />
@@ -224,7 +224,7 @@
       #{checkLatitude,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
       #{storeExistsok,jdbcType=INTEGER}, #{storeRealnameok,jdbcType=INTEGER}, #{storeCheckCityCode,jdbcType=VARCHAR}, 
       #{storeCheckCityName,jdbcType=VARCHAR}, #{storeCheckProvinceCode,jdbcType=VARCHAR}, 
-      #{storeCheckProvinceName,jdbcType=VARCHAR}, #{storeCheckaddress,jdbcType=INTEGER}, 
+      #{storeCheckProvinceName,jdbcType=VARCHAR}, #{storeCheckaddress,jdbcType=VARCHAR}, 
       #{storeRegiontype,jdbcType=INTEGER}, #{storeMendiantype,jdbcType=INTEGER}, #{storeYtsqtype,jdbcType=INTEGER}, 
       #{storeAreatype,jdbcType=INTEGER}, #{storeMemberstype,jdbcType=INTEGER}, #{storeNmonthChangeok,jdbcType=INTEGER}, 
       #{storeBusyUsercount,jdbcType=INTEGER}, #{storeFreeUsercount,jdbcType=INTEGER}, 
@@ -530,7 +530,7 @@
         #{storeCheckProvinceName,jdbcType=VARCHAR},
       </if>
       <if test="storeCheckaddress != null">
-        #{storeCheckaddress,jdbcType=INTEGER},
+        #{storeCheckaddress,jdbcType=VARCHAR},
       </if>
       <if test="storeRegiontype != null">
         #{storeRegiontype,jdbcType=INTEGER},
@@ -760,7 +760,7 @@
         store_check_province_name = #{record.storeCheckProvinceName,jdbcType=VARCHAR},
       </if>
       <if test="record.storeCheckaddress != null">
-        store_checkaddress = #{record.storeCheckaddress,jdbcType=INTEGER},
+        store_checkaddress = #{record.storeCheckaddress,jdbcType=VARCHAR},
       </if>
       <if test="record.storeRegiontype != null">
         store_regiontype = #{record.storeRegiontype,jdbcType=INTEGER},
@@ -941,7 +941,7 @@
       store_check_city_name = #{record.storeCheckCityName,jdbcType=VARCHAR},
       store_check_province_code = #{record.storeCheckProvinceCode,jdbcType=VARCHAR},
       store_check_province_name = #{record.storeCheckProvinceName,jdbcType=VARCHAR},
-      store_checkaddress = #{record.storeCheckaddress,jdbcType=INTEGER},
+      store_checkaddress = #{record.storeCheckaddress,jdbcType=VARCHAR},
       store_regiontype = #{record.storeRegiontype,jdbcType=INTEGER},
       store_mendiantype = #{record.storeMendiantype,jdbcType=INTEGER},
       store_ytsqtype = #{record.storeYtsqtype,jdbcType=INTEGER},
@@ -1063,7 +1063,7 @@
         store_check_province_name = #{storeCheckProvinceName,jdbcType=VARCHAR},
       </if>
       <if test="storeCheckaddress != null">
-        store_checkaddress = #{storeCheckaddress,jdbcType=INTEGER},
+        store_checkaddress = #{storeCheckaddress,jdbcType=VARCHAR},
       </if>
       <if test="storeRegiontype != null">
         store_regiontype = #{storeRegiontype,jdbcType=INTEGER},
@@ -1241,7 +1241,7 @@
       store_check_city_name = #{storeCheckCityName,jdbcType=VARCHAR},
       store_check_province_code = #{storeCheckProvinceCode,jdbcType=VARCHAR},
       store_check_province_name = #{storeCheckProvinceName,jdbcType=VARCHAR},
-      store_checkaddress = #{storeCheckaddress,jdbcType=INTEGER},
+      store_checkaddress = #{storeCheckaddress,jdbcType=VARCHAR},
       store_regiontype = #{storeRegiontype,jdbcType=INTEGER},
       store_mendiantype = #{storeMendiantype,jdbcType=INTEGER},
       store_ytsqtype = #{storeYtsqtype,jdbcType=INTEGER},

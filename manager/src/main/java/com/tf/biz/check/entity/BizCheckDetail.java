@@ -47,7 +47,7 @@ public class BizCheckDetail {
 
     private String storeCheckProvinceName;
 
-    private Integer storeCheckaddress;
+    private String storeCheckaddress;
 
     private Integer storeRegiontype;
 
@@ -325,12 +325,12 @@ public class BizCheckDetail {
         this.storeCheckProvinceName = storeCheckProvinceName == null ? null : storeCheckProvinceName.trim();
     }
 
-    public Integer getStoreCheckaddress() {
+    public String getStoreCheckaddress() {
         return storeCheckaddress;
     }
 
-    public void setStoreCheckaddress(Integer storeCheckaddress) {
-        this.storeCheckaddress = storeCheckaddress;
+    public void setStoreCheckaddress(String storeCheckaddress) {
+        this.storeCheckaddress = storeCheckaddress == null ? null : storeCheckaddress.trim();
     }
 
     public Integer getStoreRegiontype() {

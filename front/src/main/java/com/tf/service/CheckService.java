@@ -95,7 +95,7 @@ public class CheckService {
         checkPlan.setId(checkDetail.getPlanId());
         checkPlan.setCheckStatus(2);
         checkPlan.setLastCheckTime(checkDetail.getCheckTime());
-        this.bizCheckPlanMapper.updateByPrimaryKey(checkPlan);
+        this.bizCheckPlanMapper.updateByPrimaryKeySelective(checkPlan);
     }
 
 }

@@ -1575,52 +1575,62 @@ public class BizCheckDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressEqualTo(Integer value) {
+        public Criteria andStoreCheckaddressEqualTo(String value) {
             addCriterion("store_checkaddress =", value, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressNotEqualTo(Integer value) {
+        public Criteria andStoreCheckaddressNotEqualTo(String value) {
             addCriterion("store_checkaddress <>", value, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressGreaterThan(Integer value) {
+        public Criteria andStoreCheckaddressGreaterThan(String value) {
             addCriterion("store_checkaddress >", value, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressGreaterThanOrEqualTo(Integer value) {
+        public Criteria andStoreCheckaddressGreaterThanOrEqualTo(String value) {
             addCriterion("store_checkaddress >=", value, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressLessThan(Integer value) {
+        public Criteria andStoreCheckaddressLessThan(String value) {
             addCriterion("store_checkaddress <", value, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressLessThanOrEqualTo(Integer value) {
+        public Criteria andStoreCheckaddressLessThanOrEqualTo(String value) {
             addCriterion("store_checkaddress <=", value, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressIn(List<Integer> values) {
+        public Criteria andStoreCheckaddressLike(String value) {
+            addCriterion("store_checkaddress like", value, "storeCheckaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckaddressNotLike(String value) {
+            addCriterion("store_checkaddress not like", value, "storeCheckaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreCheckaddressIn(List<String> values) {
             addCriterion("store_checkaddress in", values, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressNotIn(List<Integer> values) {
+        public Criteria andStoreCheckaddressNotIn(List<String> values) {
             addCriterion("store_checkaddress not in", values, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressBetween(Integer value1, Integer value2) {
+        public Criteria andStoreCheckaddressBetween(String value1, String value2) {
             addCriterion("store_checkaddress between", value1, value2, "storeCheckaddress");
             return (Criteria) this;
         }
 
-        public Criteria andStoreCheckaddressNotBetween(Integer value1, Integer value2) {
+        public Criteria andStoreCheckaddressNotBetween(String value1, String value2) {
             addCriterion("store_checkaddress not between", value1, value2, "storeCheckaddress");
             return (Criteria) this;
         }
