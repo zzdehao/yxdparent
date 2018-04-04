@@ -7,6 +7,7 @@ import com.tf.param.BizCheckDetailResponse;
 import com.tf.param.Pager;
 import com.tf.service.CheckService;
 import com.tf.utils.ResultR;
+import com.tf.utils.ReturnException;
 import com.tf.utils.UUIDGenerator;
 import com.tf.web.config.ErrCode;
 import io.swagger.annotations.Api;
@@ -46,7 +47,7 @@ public class CheckController extends BaseController{
     })
     @RequestMapping(value = "/check/plan/list/{status}", method = {RequestMethod.GET})
     public ResultR getPlanList(@PathVariable Integer status,
-                               @RequestParam Integer limit, @RequestParam Integer offset) {
+                               @RequestParam Integer limit, @RequestParam Integer offset) throws ReturnException {
         ResultR r = new ResultR();
         BizCheckPlanExample example = new BizCheckPlanExample();
 
@@ -149,7 +150,7 @@ public class CheckController extends BaseController{
                     required = true, dataType = "String", paramType = "header"),
     })
     @RequestMapping(value = "/check/plan/check", method = {RequestMethod.POST})
-    public ResultR addCheck(@RequestBody BizCheckDetail checkDetail) {
+    public ResultR addCheck(@RequestBody BizCheckDetail checkDetail) throws ReturnException{
         ResultR r = new ResultR();
         checkDetail.setCreateTime(new Date());
         checkDetail.setCheckUserId(this.getCurrent().getId().longValue());
