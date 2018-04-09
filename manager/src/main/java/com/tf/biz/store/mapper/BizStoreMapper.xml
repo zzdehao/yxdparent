@@ -34,6 +34,7 @@
     <result column="store_name" jdbcType="VARCHAR" property="storeName" />
     <result column="store_code" jdbcType="VARCHAR" property="storeCode" />
     <result column="view_name" jdbcType="VARCHAR" property="viewName" />
+    <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -98,7 +99,8 @@
     company_code, company_name, province_code, province_name, city_code, city_name, address_detail, 
     longitude, latitude, channel_manager_id, channel_manager_name, channel_manager_phone, 
     create_user_id, create_user_name, create_time, is_deleted, delete_user_id, delete_user_name, 
-    delete_time, remark, platform_code, platform_name, store_name, store_code, view_name
+    delete_time, remark, platform_code, platform_name, store_name, store_code, view_name, 
+    last_check_time
   </sql>
   <select id="selectByExample" parameterType="com.tf.biz.store.entity.BizStoreExample" resultMap="BaseResultMap">
     select
@@ -149,7 +151,7 @@
       is_deleted, delete_user_id, delete_user_name, 
       delete_time, remark, platform_code, 
       platform_name, store_name, store_code, 
-      view_name)
+      view_name, last_check_time)
     values (#{batchId,jdbcType=BIGINT}, #{channelId,jdbcType=INTEGER}, #{channelCode,jdbcType=VARCHAR}, 
       #{channelName,jdbcType=VARCHAR}, #{channelType,jdbcType=INTEGER}, #{isValidChannel,jdbcType=INTEGER}, 
       #{companyCode,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{provinceCode,jdbcType=INTEGER}, 
@@ -160,7 +162,7 @@
       #{isDeleted,jdbcType=INTEGER}, #{deleteUserId,jdbcType=INTEGER}, #{deleteUserName,jdbcType=VARCHAR}, 
       #{deleteTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{platformCode,jdbcType=VARCHAR}, 
       #{platformName,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeCode,jdbcType=VARCHAR}, 
-      #{viewName,jdbcType=VARCHAR})
+      #{viewName,jdbcType=VARCHAR}, #{lastCheckTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tf.biz.store.entity.BizStore" useGeneratedKeys="true">
     insert into biz_store
@@ -258,6 +260,9 @@
       <if test="viewName != null">
         view_name,
       </if>
+      <if test="lastCheckTime != null">
+        last_check_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="batchId != null">
@@ -352,6 +357,9 @@
       </if>
       <if test="viewName != null">
         #{viewName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckTime != null">
+        #{lastCheckTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -460,6 +468,9 @@
       <if test="record.viewName != null">
         view_name = #{record.viewName,jdbcType=VARCHAR},
       </if>
+      <if test="record.lastCheckTime != null">
+        last_check_time = #{record.lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -498,7 +509,8 @@
       platform_name = #{record.platformName,jdbcType=VARCHAR},
       store_name = #{record.storeName,jdbcType=VARCHAR},
       store_code = #{record.storeCode,jdbcType=VARCHAR},
-      view_name = #{record.viewName,jdbcType=VARCHAR}
+      view_name = #{record.viewName,jdbcType=VARCHAR},
+      last_check_time = #{record.lastCheckTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -599,6 +611,9 @@
       <if test="viewName != null">
         view_name = #{viewName,jdbcType=VARCHAR},
       </if>
+      <if test="lastCheckTime != null">
+        last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -634,7 +649,8 @@
       platform_name = #{platformName,jdbcType=VARCHAR},
       store_name = #{storeName,jdbcType=VARCHAR},
       store_code = #{storeCode,jdbcType=VARCHAR},
-      view_name = #{viewName,jdbcType=VARCHAR}
+      view_name = #{viewName,jdbcType=VARCHAR},
+      last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -67,6 +67,8 @@ public class BizStore {
 
     private String viewName;
 
+    private Date lastCheckTime;
+
     public Long getId() {
         return id;
     }
@@ -321,5 +323,13 @@ public class BizStore {
 
     public void setViewName(String viewName) {
         this.viewName = viewName == null ? null : viewName.trim();
+    }
+
+    public Date getLastCheckTime() {
+        return lastCheckTime;
+    }
+
+    public void setLastCheckTime(Date lastCheckTime) {
+        this.lastCheckTime = lastCheckTime;
     }
 }

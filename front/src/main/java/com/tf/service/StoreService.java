@@ -26,4 +26,8 @@ public class StoreService {
         return this.bizStoreMapper.selectByExample(example);
     }
 
+    public void update(BizStore bizStore){
+        this.bizStoreMapper.updateByPrimaryKeySelective(bizStore);
+    }
+
 }
