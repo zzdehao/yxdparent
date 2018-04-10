@@ -13,9 +13,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://114.215.90.49:3306/test?useunicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull
-    username: sns
-    password: triptestpwd
+    url: jdbc:mysql://139.129.116.115:3306/yxd?useunicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull
+    username: st_stone
+    password: password
     initialSize: 1
     minIdle: 3
     maxActive: 20

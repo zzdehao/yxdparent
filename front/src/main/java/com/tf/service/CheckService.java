@@ -7,6 +7,7 @@ import com.tf.mapper.TAdminMapper;
 import com.tf.param.BizCheckDetailResponse;
 import com.tf.param.Pager;
 import com.tf.utils.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,13 +84,23 @@ public class CheckService {
             checkDetailResponseList.add(checkDetailResponse);
             BizCheckPlan checkPlan = planList.get(i);
             checkDetailResponse.setBizCheckPlan(checkPlan);
+            if(checkPlan.getLastCheckTime() != null){
+                if(StringUtil.isNow(checkPlan.getLastCheckTime())){
+                    checkDetailResponse.setIsCanEdit(1);
+                }else{
+                    checkDetailResponse.setIsCanEdit(2);
+                }
+            }
             checkDetailResponse.setBizStore(storeMap.get(checkPlan.getStoreId().longValue()));
         }
         pager.setRows(checkDetailResponseList);
         return pager;
     }
 
+
+
     public void addDetail(BizCheckDetail checkDetail){
+        checkDetail.setCreateTime(new Date());
         this.bizCheckDetailMapper.insertSelective(checkDetail);
         BizCheckPlan checkPlan = new BizCheckPlan();
         checkPlan.setId(checkDetail.getPlanId());
@@ -100,6 +111,11 @@ public class CheckService {
         bizStore.setId(checkDetail.getStoreId());
         bizStore.setLastCheckTime(checkDetail.getCheckTime());
         this.storeService.update(bizStore);
+    }
+
+    public void updateDetail(BizCheckDetail checkDetail){
+        this.bizCheckDetailMapper.updateByPrimaryKeySelective(checkDetail);
+
     }
 
 }

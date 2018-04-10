@@ -6,11 +6,21 @@ import com.tf.entity.BizStore;
 
 public class BizCheckDetailResponse {
 
+    private Integer isCanEdit;
+
     private BizCheckPlan bizCheckPlan;
 
     private BizCheckDetail bizCheckDetail;
 
     private BizStore bizStore;
+
+    public Integer getIsCanEdit() {
+        return isCanEdit;
+    }
+
+    public void setIsCanEdit(Integer isCanEdit) {
+        this.isCanEdit = isCanEdit;
+    }
 
     public BizCheckPlan getBizCheckPlan() {
         return bizCheckPlan;
@@ -39,8 +49,10 @@ public class BizCheckDetailResponse {
     @Override
     public String toString() {
         return "BizCheckDetailResponse{" +
-                "bizCheckDetail=" + bizCheckDetail +
+                "isCanEdit=" + isCanEdit +
+                ", bizCheckPlan=" + bizCheckPlan +
+                ", bizCheckDetail=" + bizCheckDetail +
                 ", bizStore=" + bizStore +
-                "} " + super.toString();
+                '}';
     }
 }

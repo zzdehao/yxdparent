@@ -155,7 +155,7 @@ var keyAndValueList = [
     {title: "是否三星专柜", key: "bizCheckDetail.storeZqSamsongok", map: "checkLiangMap"},
     {title: "是否苹果专柜", key: "bizCheckDetail.storeZqAppleok", map: "checkLiangMap"},
     {title: "是否魅族", key: "bizCheckDetail.storeZqMeizuok", map: "checkLiangMap"},
-    {title: "是否2g,3g专柜", key: "bizCheckDetail.storeZq2g3gok", map: "checkLiangMap"},
+    {title: "是否2g,3g终端", key: "bizCheckDetail.storeZq2g3gok", map: "checkLiangMap"},
     {title: "其他专区", key: "bizCheckDetail.otherArea", map: ""},
     {title: "业务台席数量", key: "bizCheckDetail.bizCount", map: ""},
     {title: "社会机型库存数量", key: "bizCheckDetail.storeKccheckOutcount", map: ""},

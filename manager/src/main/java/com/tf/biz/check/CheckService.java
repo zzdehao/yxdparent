@@ -443,7 +443,7 @@ public class CheckService {
         cell = headRow.createCell(n++);
         cell.setCellValue("是否魅族");
         cell = headRow.createCell(n++);
-        cell.setCellValue("是否2g,3g专柜");
+        cell.setCellValue("是否2g,3g终端");
         cell = headRow.createCell(n++);
         cell.setCellValue("其他专区");
         cell = headRow.createCell(n++);

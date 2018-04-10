@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -134,7 +135,7 @@ public class CheckController extends BaseController{
             "<br/>\"storeZqAppleok\": 0, #是否苹果专柜\n" +
             "<br/>\"storeZqMeizuok\": 0, #是否魅族\n" +
             "<br/>\"otherArea\": 0, #其他专区\n" +
-            "<br/>\"storeZq2g3gok\": 0, #是否2g,3g专柜\n" +
+            "<br/>\"storeZq2g3gok\": 0, #是否2g,3g终端\n" +
             "<br/>\"storeKccheckOutcount\": 0, #社会机型库存数量\n" +
             "<br/>\"storeKccheckSelfcount\": 0, #自由机型库存数量\n" +
             "<br/>\"stroeFrontImage2\": \"string\", #店铺门头正面1\n" +
@@ -152,11 +153,14 @@ public class CheckController extends BaseController{
     @RequestMapping(value = "/check/plan/check", method = {RequestMethod.POST})
     public ResultR addCheck(@RequestBody BizCheckDetail checkDetail) throws ReturnException{
         ResultR r = new ResultR();
-        checkDetail.setCreateTime(new Date());
         checkDetail.setCheckUserId(this.getCurrent().getId().longValue());
         checkDetail.setCheckUserName(this.getCurrent().getName());
         checkDetail.setCheckUserPhone(this.getCurrent().getTel());
-        this.checkService.addDetail(checkDetail);
+        if(checkDetail.getId() == null){
+            this.checkService.addDetail(checkDetail);
+        }else{
+            this.checkService.updateDetail(checkDetail);
+        }
         return r;
     }
 

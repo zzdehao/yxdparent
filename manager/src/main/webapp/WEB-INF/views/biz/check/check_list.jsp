@@ -149,7 +149,7 @@
                 <th width="120" nowrap keyName="storeZqSamsongok" queryMap="okMap">是否三星专柜</th>
                 <th width="120" nowrap keyName="storeZqAppleok" queryMap="okMap">是否苹果专柜</th>
                 <th width="120" nowrap keyName="storeZqMeizuok" queryMap="okMap">是否魅族</th>
-                <th width="120" nowrap keyName="storeZq2g3gok" queryMap="okMap">是否2g,3g专柜</th>
+                <th width="120" nowrap keyName="storeZq2g3gok" queryMap="okMap">是否2g,3g终端</th>
                 <th width="120" nowrap>其他专区</th>
                 <th width="120" nowrap>业务台席数量</th>
                 <th width="120" nowrap>社会机型库存数量</th>

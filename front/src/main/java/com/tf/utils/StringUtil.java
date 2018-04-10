@@ -1,4 +1,10 @@
 package com.tf.utils;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 字符串工具类
  *
@@ -55,4 +61,21 @@ public class StringUtil {
             return null;
         }
     }
+
+    /**
+     * 判断时间是不是今天
+     * @param date
+     * @return    是返回true，不是返回false
+     */
+    public static boolean isNow(Date date) {
+        //当前时间
+        Date now = new Date();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+        //获取今天的日期
+        String nowDay = sf.format(now);
+        //对比的时间
+        String day = sf.format(date);
+        return day.equals(nowDay);
+    }
+
 }
